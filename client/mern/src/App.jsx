@@ -33,12 +33,20 @@ function App() {
 
   }, [])
 
+  const handleClickAddCat = () => {
+    console.log(catImage[0].id);
+  }
+  
+  const handleClickAddDog = () => {
+    console.log(dogImage[0].id);
+  }
 
-  // console.log(catImage[0].breed);
+
 
   return (
     <>
       {catImage && dogImage &&
+
         <div>
           
           <img src={catImage[0].url} ></img><br />

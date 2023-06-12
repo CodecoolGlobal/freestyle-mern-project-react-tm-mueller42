@@ -3,6 +3,8 @@ const express = require('express');
 let Animals = require('./model/animals.js');
 const cors = require("cors");
 
+mongoose.connect("mongodb+srv://onclickmagic:onClickMongo@onclickmagic.8blvh8a.mongodb.net/")
+
 const app = express();
 app.use(express.json());
 app.use(cors());
