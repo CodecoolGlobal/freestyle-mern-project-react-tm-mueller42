@@ -19,7 +19,7 @@ function App() {
     })
     // console.log(changeMade);
     // console.log(todoList);
-}, [changeMade])
+}, [])
 
   return (
     <>
