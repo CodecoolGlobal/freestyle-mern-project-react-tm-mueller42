@@ -1,5 +1,6 @@
-
+import './App.css'
 import { useState, useEffect } from 'react'
+
 
 // import Todo  from './components/todo';
 // import './App.css'
@@ -17,32 +18,45 @@ function App() {
 
   useEffect(() => {
     fetch(catUrl)
-    .then(response => response.json())
-    .then(data => { 
-      setCatImage(data);
-      // console.log(data)
-      // console.log(data[0].breeds);
-    })
+      .then(response => response.json())
+      .then(data => {
+        setCatImage(data);
+        // console.log(data)
+        // console.log(data[0].breeds);
+      })
     fetch(dogUrl)
-    .then(response => response.json())
-    .then(data => { 
-      setDogImage(data);
-    })
+      .then(response => response.json())
+      .then(data => {
+        setDogImage(data);
+      })
     // console.log(changeMade);
-    // console.log(todoList);
-}, [])
+
+  }, [])
 
 
-// console.log(catImage[0].breed);
+  // console.log(catImage[0].breed);
 
   return (
     <>
       {catImage && dogImage &&
         <div>
-          <img src={catImage[0].url} height="500"></img>
-          <img src={dogImage[0].url} height="500"></img>
+          
+          <img src={catImage[0].url} ></img><br />
+          <label>put to favorite</label>
+          <input type="checkbox"></input> <br />
+          <label>vote: </label>
+          <input type="text" placeholder='from 1-10'></input><br/>
+
+          
+          <img src={dogImage[0].url} ></img><br/>
+          <label>put to favorite</label>
+          <input type="checkbox"></input> <br />
+          <label>vote: </label><br/>
+          <input type="text" placeholder='from 1-10'></input>
         </div>
       }
+      <button type="button" > show Favorite</button>
+
 
     </>
   )

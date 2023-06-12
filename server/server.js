@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// let Todo = require('./model/todo.js');
+let Animals = require('./model/animals.js');
 const cors = require("cors");
 
 const app = express();
