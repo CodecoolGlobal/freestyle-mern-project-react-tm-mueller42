@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// let Todo = require('./model/todo.js');
+// let Animal = require('./model/animal.js');
 const cors = require("cors");
+
+mongoose.connect("mongodb+srv://tm-mueller42:c0dec00lAtlas@codecool01.reeb5ic.mongodb.net/")
 
 const app = express();
 app.use(express.json());

@@ -29,14 +29,26 @@ function App() {
     // console.log(todoList);
 }, [])
 
-// console.log(catImage[0].breed);
+const handleClickAddCat = () => {
+  console.log(catImage[0].id);
+}
+
+const handleClickAddDog = () => {
+  console.log(dogImage[0].id);
+}
 
   return (
     <>
       {catImage && dogImage &&
-        <div>
-          <img src={catImage[0].url} height="500"></img>
-          <img src={dogImage[0].url} height="500"></img>
+        <div className="animalcontainer">
+          <div className="animalcard">
+          <img src={catImage[0].url} height="50"></img>
+          <button onClick = {handleClickAddCat}>Add this cat to favourites</button>
+          </div>
+          <div className="animalcard">
+          <img src={dogImage[0].url} height="50"></img>
+          <button onClick = {handleClickAddDog}>Add this dog to favourites</button>
+          </div>
         </div>
       }
     </>
