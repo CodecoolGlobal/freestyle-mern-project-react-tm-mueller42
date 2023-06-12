@@ -1,16 +1,20 @@
 import { useState } from 'react'
 
-import viteLogo from '/vite.svg'
-import './App.css'
+// import Todo  from './components/todo';
+// import './App.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const url = "http://localhost:4000/todo/";
 
   return (
     <>
-      <p>hallo</p>
-        
-        
+
+      <div>
+        Test
+      </div>
+      
+
     </>
   )
 }
