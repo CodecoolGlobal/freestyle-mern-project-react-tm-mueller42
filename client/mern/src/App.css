@@ -41,6 +41,7 @@
   color: #888;
 }
 img{
+  padding:2%;
   max-height: 300px;
   max-width: 300px;
 }
