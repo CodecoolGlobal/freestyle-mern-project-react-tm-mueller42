@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-// let Animal = require('./model/animal.js');
+let Animals = require('./model/animals.js');
 const cors = require("cors");
 
 mongoose.connect("mongodb+srv://tm-mueller42:c0dec00lAtlas@codecool01.reeb5ic.mongodb.net/")

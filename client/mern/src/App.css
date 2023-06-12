@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+img{
+  max-height: 300px;
+  max-width: 300px;
+}
+button{
+  padding: 2%;
+}
