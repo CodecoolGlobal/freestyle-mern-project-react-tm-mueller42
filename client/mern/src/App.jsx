@@ -1,10 +1,10 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-
+import Showrandomanimals from "./components/showrandomanimals"
+import Favourites from './components/Favourites';
 
 // import Todo  from './components/todo';
 // import './App.css'
-
 
 function App() {
   const catKey = `live_9hHoRgxnuzyI8OwZQN1DfcPacnqYhMr1A9YZ6RNrTFj1Fc18uUdqFcOGSpr2nBX4`;
@@ -15,6 +15,9 @@ function App() {
 
   const [catImage, setCatImage] = useState(null);
   const [dogImage, setDogImage] = useState(null);
+  const [currentCatData, setCurrentCatData] = useState(null);
+  const [currentDogData, setCurrentDogData] = useState(null);
+  const [showFavourites, setShowFavourites] = useState(false);
 
   useEffect(() => {
     fetch(catUrl)
@@ -33,39 +36,43 @@ function App() {
 
   }, [])
 
-  const handleClickAddCat = () => {
-    console.log(catImage[0].id);
-  }
-  
-  const handleClickAddDog = () => {
-    console.log(dogImage[0].id);
-  }
 
 
+
+const handleClickShowFavourites = (e) => {
+  e.preventDefault();
+  setShowFavourites(true);
+}
+
+const handleshowFavourites = () => {
+  setShowFavourites(true);
+}
 
   return (
     <>
-      {catImage && dogImage &&
+      {catImage && dogImage && !showFavourites &&
 
         <div>
+<<<<<<< HEAD
           
           <img src={catImage[0].url} ></img><br />
           <label>put to favorite</label>
           <input type="checkbox" ></input> <br />
           <label>vote: </label>
           <input type="text" placeholder='from 1-10'></input><br/>
+=======
+>>>>>>> development
 
-          
-          <img src={dogImage[0].url} ></img><br/>
-          <label>put to favorite</label>
-          <input type="checkbox"></input> <br />
-          <label>vote: </label><br/>
-          <input type="text" placeholder='from 1-10'></input>
+          <Showrandomanimals
+          cat = {catImage[0]}
+          dog = {dogImage[0]}
+          showFavourites = {handleshowFavourites}
+          />
         </div>
       }
-      <button type="button" > show Favorite</button>
-
-
+      {showFavourites && <Favourites
+        backClick={setShowFavourites}/>
+      }
     </>
   )
 }
