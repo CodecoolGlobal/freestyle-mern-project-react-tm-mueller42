@@ -2,7 +2,7 @@ import React, {useState } from "react";
 import Postanimal from "../components/postanimal";
 
 
-export default function ShowRandomAnimals({cat, dog, showFavourites}) {
+export default function ShowRandomAnimals({cat, dog, showFavourites, loadNext}) {
 
   const [addFavCat, setAddFavCat] = useState(false);
   const [addFavDog, setAddFavDog] = useState(false);
@@ -16,7 +16,6 @@ export default function ShowRandomAnimals({cat, dog, showFavourites}) {
   const [dogVote, setDogVote] = useState(null);
   const [submitted, setSubmitted] = useState(true);
 
-console.log(submitted);
 
   class Animal {
     constructor(title, comment, breed, favorite, votes, createdAt, imgUrl, type) {
@@ -52,14 +51,16 @@ console.log(submitted);
       setSubmitted(true);
     }
 
-const handleClick = () => {
-  setSubmitted(false)
-}
+    const handleClickNext = () => {
+      loadNext();
+      setSubmitted(false);
+    }
 
     return (
         <>
         {!submitted &&
         <>
+        <button onClick={handleClickNext}>next</button>
         <form onSubmit={handleSubmit}>
             <button type="submit">submit</button>
             <br></br>
@@ -89,8 +90,10 @@ const handleClick = () => {
         }
         {submitted &&
         <>
-          <div>submitted</div>
-          <button onClick={handleClick}>back</button>
+          <Postanimal
+          />
+          <button onClick={() => {setSubmitted(false)}}>back</button>
+          <button onClick={handleClickNext}>next</button>
         </>
         }
         </>
