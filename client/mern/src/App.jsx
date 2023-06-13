@@ -5,7 +5,6 @@ import Favourites from './components/Favourites';
 // import Todo  from './components/todo';
 // import './App.css'
 
-
 function App() {
   const catKey = `live_9hHoRgxnuzyI8OwZQN1DfcPacnqYhMr1A9YZ6RNrTFj1Fc18uUdqFcOGSpr2nBX4`;
   const dogKey = `live_0a6G4hjU8SkRWu0ZNqDsxTm9FN2fZojDg2U4Uwc03Pw6AMTSBodVKrVwguTvTv78`;
@@ -57,7 +56,7 @@ const handleClickShowFavourites = (e) => {
       {catImage && dogImage && !showFavourites &&
 
         <div>
-          <form onSubmit={handleSubmit}>
+          <form className='' onSubmit={handleSubmit}>
             <button type="submit">submit</button>
             <br></br>
             <img src={catImage[0].url} ></img><br />
