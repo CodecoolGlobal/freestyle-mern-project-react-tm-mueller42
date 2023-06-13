@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-
+import Showrandomanimals from "./components/showrandomanimals"
 
 // import Todo  from './components/todo';
 // import './App.css'
@@ -36,47 +36,27 @@ function App() {
 
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(catImage[0].id);
-  }
-
-const handleClickShowFavourites = (e) => {
-  e.preventDefault();
-  setShowFavourites(true);
-}
-
 const handleClickBack = (e) => {
   e.preventDefault();
   setShowFavourites(false);
 }
 
+const handleshowFavourites = () => {
+  setShowFavourites(true);
+}
 
   return (
     <>
       {catImage && dogImage && !showFavourites &&
 
         <div>
-          <form onSubmit={handleSubmit}>
-            <button type="submit">submit</button>
-            <br></br>
-            <img src={catImage[0].url} ></img><br />
-            <label>put to favorite</label>
-            <input type="checkbox"></input> <br />
-            <label>vote: </label>
-            <input type="text" placeholder='from 1-10'></input><br/>
-
-            
-            <img src={dogImage[0].url} ></img><br/>
-            <label>put to favorite</label>
-            <input type="checkbox"></input> <br />
-            <label>vote: </label><br/>
-            <input type="text" placeholder='from 1-10'></input>
-          </form>
-          <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+          <Showrandomanimals
+          cat = {catImage[0]}
+          dog = {dogImage[0]}
+          showFavourites = {handleshowFavourites}
+          />
         </div>
       }
-      
       {showFavourites &&
         <div>
           ok
