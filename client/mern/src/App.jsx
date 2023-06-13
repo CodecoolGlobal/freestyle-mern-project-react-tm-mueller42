@@ -1,10 +1,10 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
+import Favourites from './components/Favourites';
 
 // import Todo  from './components/todo';
 // import './App.css'
-
 
 function App() {
   const catKey = `live_9hHoRgxnuzyI8OwZQN1DfcPacnqYhMr1A9YZ6RNrTFj1Fc18uUdqFcOGSpr2nBX4`;
@@ -36,9 +36,12 @@ function App() {
 
   }, [])
 
-const handleClickBack = (e) => {
+
+
+
+const handleClickShowFavourites = (e) => {
   e.preventDefault();
-  setShowFavourites(false);
+  setShowFavourites(true);
 }
 
 const handleshowFavourites = () => {
@@ -50,6 +53,7 @@ const handleshowFavourites = () => {
       {catImage && dogImage && !showFavourites &&
 
         <div>
+
           <Showrandomanimals
           cat = {catImage[0]}
           dog = {dogImage[0]}
@@ -57,15 +61,9 @@ const handleshowFavourites = () => {
           />
         </div>
       }
-      {showFavourites &&
-        <div>
-          ok
-          <button onClick={handleClickBack}>back</button>
-        </div>
-
+      {showFavourites && <Favourites
+        backClick={setShowFavourites}/>
       }
-
-
     </>
   )
 }

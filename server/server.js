@@ -15,6 +15,18 @@ app.use(function(req, res, next) {
     next();
 })
 
+app.get("/dognames", (req, res) => {
+    const data = readDataFile("./server/names.json");
+    res.send(data.dogs);
+})
+
+app.get("/catnames", (req, res) => {
+    const data = readDataFile("./server/names.json");
+    res.send(data.cats);
+})
+
+
+
 
 
 app.listen(4000, () => console.log('Server started on port 4000'));
