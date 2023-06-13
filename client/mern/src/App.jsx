@@ -1,6 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-
+import Favourites from './components/Favourites';
 
 // import Todo  from './components/todo';
 // import './App.css'
@@ -46,10 +46,10 @@ const handleClickShowFavourites = (e) => {
   setShowFavourites(true);
 }
 
-const handleClickBack = (e) => {
-  e.preventDefault();
-  setShowFavourites(false);
-}
+// const handleClickBack = (e) => {
+//   e.preventDefault();
+//   setShowFavourites(false);
+// }
 
 
   return (
@@ -73,19 +73,12 @@ const handleClickBack = (e) => {
             <label>vote: </label><br/>
             <input type="text" placeholder='from 1-10'></input>
           </form>
-          <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+          <button type="button" onClick={handleClickShowFavourites}> Show Favourites</button>
         </div>
       }
-      
-      {showFavourites &&
-        <div>
-          ok
-          <button onClick={handleClickBack}>back</button>
-        </div>
-
+      {showFavourites && <Favourites
+      backClick={setShowFavourites}/>
       }
-
-
     </>
   )
 }
