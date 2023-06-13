@@ -51,7 +51,7 @@ function App() {
           
           <img src={catImage[0].url} ></img><br />
           <label>put to favorite</label>
-          <input type="checkbox"></input> <br />
+          <input type="checkbox" ></input> <br />
           <label>vote: </label>
           <input type="text" placeholder='from 1-10'></input><br/>
 
