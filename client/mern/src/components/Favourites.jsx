@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import DeleteFavourites from "./DeleteFavourite";
 
 export default function ShowFavourites({ backClick }) {
 
@@ -9,6 +10,7 @@ export default function ShowFavourites({ backClick }) {
 
     return(
         <div className="showfavouritescontainer">
+        <DeleteFavourites/>
         <button onClick={handleBackClick}>back</button>
         </div>
     )

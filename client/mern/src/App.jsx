@@ -77,7 +77,7 @@ const handleClickShowFavourites = (e) => {
         </div>
       }
       {showFavourites && <Favourites
-      backClick={setShowFavourites}/>
+        backClick={setShowFavourites}/>
       }
     </>
   )
