@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 let Animals = require('./models/animals.js');
 const cors = require("cors");
+const fs = require("fs");
 
 mongoose.connect("mongodb+srv://onclickmagic:onClickMongo@onclickmagic.8blvh8a.mongodb.net/")
 
@@ -15,13 +16,19 @@ app.use(function(req, res, next) {
     next();
 })
 
+function readDataFile(file) {
+    const content = fs.readFileSync(file, "utf8");
+    const data = JSON.parse(content);
+    return data;
+}
+
 app.get("/dognames", (req, res) => {
-    const data = readDataFile("./server/names.json");
+    const data = readDataFile("./names.json");
     res.send(data.dogs);
 })
 
 app.get("/catnames", (req, res) => {
-    const data = readDataFile("./server/names.json");
+    const data = readDataFile("./names.json");
     res.send(data.cats);
 })
 
