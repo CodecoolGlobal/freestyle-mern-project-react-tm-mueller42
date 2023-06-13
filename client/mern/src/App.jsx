@@ -15,6 +15,9 @@ function App() {
 
   const [catImage, setCatImage] = useState(null);
   const [dogImage, setDogImage] = useState(null);
+  const [currentCatData, setCurrentCatData] = useState(null);
+  const [currentDogData, setCurrentDogData] = useState(null);
+  const [showFavourites, setShowFavourites] = useState(false);
 
   useEffect(() => {
     fetch(catUrl)
@@ -33,37 +36,54 @@ function App() {
 
   }, [])
 
-  const handleClickAddCat = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(catImage[0].id);
   }
-  
-  const handleClickAddDog = () => {
-    console.log(dogImage[0].id);
-  }
 
+const handleClickShowFavourites = (e) => {
+  e.preventDefault();
+  setShowFavourites(true);
+}
+
+const handleClickBack = (e) => {
+  e.preventDefault();
+  setShowFavourites(false);
+}
 
 
   return (
     <>
-      {catImage && dogImage &&
+      {catImage && dogImage && !showFavourites &&
 
         <div>
-          
-          <img src={catImage[0].url} ></img><br />
-          <label>put to favorite</label>
-          <input type="checkbox"></input> <br />
-          <label>vote: </label>
-          <input type="text" placeholder='from 1-10'></input><br/>
+          <form onSubmit={handleSubmit}>
+            <button type="submit">submit</button>
+            <br></br>
+            <img src={catImage[0].url} ></img><br />
+            <label>put to favorite</label>
+            <input type="checkbox"></input> <br />
+            <label>vote: </label>
+            <input type="text" placeholder='from 1-10'></input><br/>
 
-          
-          <img src={dogImage[0].url} ></img><br/>
-          <label>put to favorite</label>
-          <input type="checkbox"></input> <br />
-          <label>vote: </label><br/>
-          <input type="text" placeholder='from 1-10'></input>
+            
+            <img src={dogImage[0].url} ></img><br/>
+            <label>put to favorite</label>
+            <input type="checkbox"></input> <br />
+            <label>vote: </label><br/>
+            <input type="text" placeholder='from 1-10'></input>
+          </form>
+          <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
         </div>
       }
-      <button type="button" > show Favorite</button>
+      
+      {showFavourites &&
+        <div>
+          ok
+          <button onClick={handleClickBack}>back</button>
+        </div>
+
+      }
 
 
     </>
