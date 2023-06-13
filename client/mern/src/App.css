@@ -41,10 +41,22 @@
   color: #888;
 }
 img{
+  border:2px solid gray;
+  
   padding:2%;
   max-height: 300px;
   max-width: 300px;
 }
 button{
   padding: 2%;
+  border: 20px solid black;
+}
+form{
+  border:2px solid black;
+  width: 104%;
+  height: 100%;
+}
+input{
+  float: right;
+  margin-left: 1%;
 }
