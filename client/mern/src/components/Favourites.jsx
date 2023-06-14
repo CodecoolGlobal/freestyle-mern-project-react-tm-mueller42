@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from "react";
-import DeleteFavourites from "./DeleteFavourite";
-
-
 
 export default function ShowFavourites({ backClick }) {
 
@@ -44,10 +41,6 @@ export default function ShowFavourites({ backClick }) {
                     <button className="deleteFavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
                 </div>
             ))}
-            {/* <DeleteFavourites
-                id={favorites._id}
-                favourites={favourites}
-                setFavourites={setFavourites}/> */}
             <button onClick={handleBackClick}>back</button>
         </div>
     )
