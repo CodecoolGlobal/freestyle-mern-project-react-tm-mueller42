@@ -65,5 +65,30 @@ app.post ("/animal", (req,res) => {
     // res.send(JSON.stringify("ok"));
 })
 
+app.get('/animal', (req, res) => {
+    Animal.find()
+        .then(animal => {
+        console.log("animal", animal)
+        res.json(animal);
+        })
+        .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+        });
+    });
+
+app.delete('/animal/:id', (req, res) => {
+    const id = req.params.id;
+
+    Animal.findByIdAndDelete(id)
+    .then(() => {
+        console.log('Todo deleted:', id);
+        res.sendStatus(204);
+    })
+    .catch(error => {
+        console.error('Error deleting todo:', error);
+        res.status(500).send('Internal Server Error');
+    });
+})
 
 app.listen(4000, () => console.log('Server started on port 4000'));
