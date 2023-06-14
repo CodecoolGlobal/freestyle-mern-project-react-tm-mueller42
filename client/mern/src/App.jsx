@@ -49,7 +49,7 @@ const handleshowFavourites = () => {
 const handleLoadNext = () => {
   fetchAnimals(catUrl, dogUrl);
 }
-
+console.log(catImage)
   return (
     <>
       {catImage && dogImage && !showFavourites &&
