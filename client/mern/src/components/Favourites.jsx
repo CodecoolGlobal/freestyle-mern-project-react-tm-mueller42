@@ -12,6 +12,9 @@ const [favourites, setFavourites] = useState([]);
         backClick(false)
     }
 
+fetch('http://localhost:4000/animal')
+.then(res => res.json())
+.then(data => console.log(data))
 
     return(
         <div className="showfavouritescontainer">

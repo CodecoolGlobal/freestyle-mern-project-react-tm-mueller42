@@ -2,6 +2,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
 import Favourites from './components/Favourites';
+import img from '../src/images/cat.png';
 
 // import Todo  from './components/todo';
 // import './App.css'
@@ -18,56 +19,68 @@ function App() {
   const [currentCatData, setCurrentCatData] = useState(null);
   const [currentDogData, setCurrentDogData] = useState(null);
   const [showFavourites, setShowFavourites] = useState(false);
-
+  const [showImage, setShowImage] = useState(false)
 
   const fetchAnimals = (catUrl, dogUrl) => {
     fetch(catUrl)
-    .then(response => response.json())
-    .then(data => {
-      setCatImage(data);
-    })
-  fetch(dogUrl)
-    .then(response => response.json())
-    .then(data => {
-      setDogImage(data);
-    })
+      .then(response => response.json())
+      .then(data => {
+        setCatImage(data);
+      })
+    fetch(dogUrl)
+      .then(response => response.json())
+      .then(data => {
+        setDogImage(data);
+      })
   }
 
   useEffect(() => {
     fetchAnimals(catUrl, dogUrl);
   }, [])
 
-const handleClickShowFavourites = (e) => {
-  e.preventDefault();
-  setShowFavourites(true);
-}
+  const handleClickShowFavourites = (e) => {
+    e.preventDefault();
+    setShowFavourites(true);
+  }
 
-const handleshowFavourites = () => {
-  setShowFavourites(true);
-}
+  const handleshowFavourites = () => {
+    setShowFavourites(true);
+  }
 
-const handleLoadNext = () => {
-  fetchAnimals(catUrl, dogUrl);
-}
-console.log(catImage)
+  const handleLoadNext = () => {
+    fetchAnimals(catUrl, dogUrl);
+  }
+
+
+
   return (
     <>
+      <div id="intro">
+        {
+          setTimeout(() => console.log("time"), 5000) && showImage && <img src="../src/images/cat.png"></img>
+        }
+        {
+          setTimeout(() => console.log("time"), 15000) && <img src="../src/images/dog.png"></img>
+        }
+
+      </div>
+
       {catImage && dogImage && !showFavourites &&
 
         <div>
 
 
           <Showrandomanimals
-          cat = {catImage[0]}
-          dog = {dogImage[0]}
-          showFavourites = {handleshowFavourites}
-          loadNext={handleLoadNext}
-          serverUrl = {serverUrl}
+            cat={catImage[0]}
+            dog={dogImage[0]}
+            showFavourites={handleshowFavourites}
+            loadNext={handleLoadNext}
+            serverUrl={serverUrl}
           />
         </div>
       }
       {showFavourites && <Favourites
-        backClick={setShowFavourites}/>
+        backClick={setShowFavourites} />
       }
     </>
   )
