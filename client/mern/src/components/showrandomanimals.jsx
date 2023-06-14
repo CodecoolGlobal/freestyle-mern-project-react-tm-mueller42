@@ -120,11 +120,13 @@ export default function ShowRandomAnimals({cat, dog, showFavourites, loadNext, s
         }
         {submitted &&
         <>
-          <Postanimal
+          {/* <Postanimal
           cat = {catToAdd}
           dog = {dogToAdd}
           serverUrl = {serverUrl}
-          />
+          /> */}
+          submitted
+          <br></br>
           <button onClick={() => {setSubmitted(false)}}>back</button>
           <button onClick={handleClickNext}>next</button>
         </>
