@@ -80,7 +80,9 @@ function App() {
         </div>
       }
       {showFavourites && <Favourites
-        backClick={setShowFavourites} />
+
+        backClick={() => setShowFavourites}/>
+
       }
     </>
   )

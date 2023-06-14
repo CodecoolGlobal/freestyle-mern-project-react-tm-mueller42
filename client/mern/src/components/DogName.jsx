@@ -9,7 +9,7 @@ export default function DogName() {
           .then(response => response.json())
           .then(data => {
             setDognames(data);
-           
+
           })
       }, [])
 
