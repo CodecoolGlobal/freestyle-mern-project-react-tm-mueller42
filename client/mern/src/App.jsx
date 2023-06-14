@@ -11,7 +11,7 @@ function App() {
   const dogKey = `live_0a6G4hjU8SkRWu0ZNqDsxTm9FN2fZojDg2U4Uwc03Pw6AMTSBodVKrVwguTvTv78`;
   const catUrl = `https://api.thecatapi.com/v1/images/search?api_key=${catKey}&has_breeds=1`
   const dogUrl = `https://api.thedogapi.com/v1/images/search?api_key=${dogKey}&has_breeds=1`
-  const serverUrl = "http://localhost:4000/todo/";
+  const serverUrl = "http://localhost:4000/animal/";
 
   const [catImage, setCatImage] = useState(null);
   const [dogImage, setDogImage] = useState(null);
@@ -19,25 +19,23 @@ function App() {
   const [currentDogData, setCurrentDogData] = useState(null);
   const [showFavourites, setShowFavourites] = useState(false);
 
-  useEffect(() => {
+
+  const fetchAnimals = (catUrl, dogUrl) => {
     fetch(catUrl)
-      .then(response => response.json())
-      .then(data => {
-        setCatImage(data);
-        // console.log(data)
-        // console.log(data[0].breeds);
-      })
-    fetch(dogUrl)
-      .then(response => response.json())
-      .then(data => {
-        setDogImage(data);
-      })
-    // console.log(changeMade);
+    .then(response => response.json())
+    .then(data => {
+      setCatImage(data);
+    })
+  fetch(dogUrl)
+    .then(response => response.json())
+    .then(data => {
+      setDogImage(data);
+    })
+  }
 
+  useEffect(() => {
+    fetchAnimals(catUrl, dogUrl);
   }, [])
-
-
-
 
 const handleClickShowFavourites = (e) => {
   e.preventDefault();
@@ -46,6 +44,10 @@ const handleClickShowFavourites = (e) => {
 
 const handleshowFavourites = () => {
   setShowFavourites(true);
+}
+
+const handleLoadNext = () => {
+  fetchAnimals(catUrl, dogUrl);
 }
 
   return (
@@ -59,6 +61,8 @@ const handleshowFavourites = () => {
           cat = {catImage[0]}
           dog = {dogImage[0]}
           showFavourites = {handleshowFavourites}
+          loadNext={handleLoadNext}
+          serverUrl = {serverUrl}
           />
         </div>
       }
