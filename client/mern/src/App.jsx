@@ -2,10 +2,10 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
 import Favourites from './components/Favourites';
-import img from '../src/images/cat.png';
+
 
 // import Todo  from './components/todo';
-// import './App.css'
+
 
 function App() {
   const catKey = `live_9hHoRgxnuzyI8OwZQN1DfcPacnqYhMr1A9YZ6RNrTFj1Fc18uUdqFcOGSpr2nBX4`;
@@ -50,22 +50,23 @@ function App() {
   const handleLoadNext = () => {
     fetchAnimals(catUrl, dogUrl);
   }
-
-
+  const finishIntro = () => {
+    document.getElementById("intro").innerHTML = "";
+    setShowImage(true)
+  }
 
   return (
     <>
-      <div id="intro">
-        {
-          setTimeout(() => console.log("time"), 5000) && showImage && <img src="../src/images/cat.png"></img>
-        }
-        {
-          setTimeout(() => console.log("time"), 15000) && <img src="../src/images/dog.png"></img>
-        }
+      {setTimeout(() => finishIntro(), 5000) &&
+        <div id="intro">
+          <img id="catImg" src="../src/images/cat.png"></img>
+          <img id="vsImg" src="../src/images/vs.png"></img>
+          <img id="dogImg" src="../src/images/dog.png"></img>
+        </div>
 
-      </div>
+      }
 
-      {catImage && dogImage && !showFavourites &&
+      {catImage && dogImage && !showFavourites && showImage &&
 
         <div>
 
@@ -81,7 +82,7 @@ function App() {
       }
       {showFavourites && <Favourites
 
-        backClick={() => setShowFavourites}/>
+        backClick={() => setShowFavourites} />
 
       }
     </>

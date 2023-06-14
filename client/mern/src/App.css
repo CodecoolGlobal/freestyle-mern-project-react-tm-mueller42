@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,23 +43,86 @@
 .read-the-docs {
   color: #888;
 }
-img{
-  border:2px solid gray;
-  
-  padding:2%;
-  max-height: 300px;
-  max-width: 300px;
+
+img {
+  /* border: 2px solid gray; */
+
+  padding: 2%;
+  max-height: 250px;
+  max-width: 250px;
 }
-button{
+
+button {
   padding: 2%;
   border: 20px solid black;
 }
-form{
-  border:2px solid black;
+
+form {
+  border: 2px solid black;
   width: 104%;
   height: 100%;
 }
-input{
+
+input {
   float: right;
   margin-left: 1%;
+}
+
+#backFromFav{
+  top:2%;
+  left: 5%;
+  position: fixed;
+}
+#fav{
+  position:relative;
+  float:inline-end;
+  width: 300px;
+  height: 500px;
+}
+#next{
+  top:2%;
+  right:5%;
+  position:absolute;
+}
+/* intro */
+
+#catImg {
+  position: absolute;
+  top: 25%;
+  left:2%;
+  animation: catAnimateImages 500ms linear forwards;
+}
+@keyframes catAnimateImages {
+  0%   { left:0%; top:25%;}
+  100% {left:23%; top:25%;}
+  100% {background-color:rgb(241, 91, 163); left:23%; top:25%;}
+}
+
+#vsImg {
+  animation: vsAnimateImages 2s 1s linear forwards;
+  position: absolute;
+  top:0%;
+  right: 45%;
+  width: 100px;
+  height: 100px;
+}
+@keyframes vsAnimateImages {
+
+  0%   { right:45%; top:0%;}
+  100% { right:45%; top:35%;width: 150px;
+    height: 150px;}
+}
+
+#dogImg {
+  animation: dogAnimateImages 500ms 1s linear forwards;
+  position: absolute;
+  top:25%;
+  right: 2%;
+}
+
+@keyframes dogAnimateImages {
+
+  0%   { right:0%; top:25%;}
+  100% {right:25%; top:25%;}
+  100% {background-color:rgb(243, 114, 85); right:25%; top:25%;}
 }

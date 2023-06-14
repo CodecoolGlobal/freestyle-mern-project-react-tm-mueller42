@@ -107,7 +107,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     
       {!submitted &&
         <>
-          <button onClick={handleClickNext}>next</button>
+          <button id = "next" onClick={handleClickNext}>next</button>
           <form onSubmit={handleSubmit}>
 
             <button type="submit">submit</button>
