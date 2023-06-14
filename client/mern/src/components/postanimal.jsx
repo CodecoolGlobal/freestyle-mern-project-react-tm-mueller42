@@ -4,7 +4,7 @@ let run = true;
 export default function Postanimal({cat, dog, serverUrl}) {
     
     useEffect(() => {
-        if(run=true){
+        if(run===true){
             if(cat) {    
             fetch(serverUrl, {
                 method:"POST",
