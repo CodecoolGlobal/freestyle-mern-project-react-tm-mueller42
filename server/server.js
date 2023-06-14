@@ -79,7 +79,7 @@ app.post ("/animal", (req,res) => {
         }else {
             const animal = data[0];          
             animal.title = title;
-            animal.coment = comment;
+            animal.comment = comment;
             animal.votes = votes;
             animal.save()
             .then(() => res.send(JSON.stringify("Animal updated")))
