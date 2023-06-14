@@ -9,7 +9,6 @@ export default function CatName() {
           .then(response => response.json())
           .then(data => {
             setCatnames(data);
-            console.log(data);
           })
       }, [])
 
