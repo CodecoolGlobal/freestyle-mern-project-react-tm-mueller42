@@ -26,9 +26,21 @@ app.get("/catnames", (req, res) => {
     res.send(data.cats);
 })
 
+// app.get("/animal/:id", (req, res) => {
+//     const searchId = req.params.id;
+//     Animal.find({id:searchId})
+//     .then((data) => res.json(data))
+//     .catch(error => res.json(error))
+// })
+
+app.get("/animal", (req,res) => {
+    Animal.find({})
+    .then(data => res.json(data))
+    .catch(error => res.json(error))
+});
 
 app.post ("/animal", (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const id = req.body.id;
     const title = req.body.title;
     const comment = req.body.comment;
@@ -39,23 +51,36 @@ app.post ("/animal", (req,res) => {
     const imgUrl = req.body.imgUrl;
     const type = req.body.type;
 
-    const animal = new Animal({
-        id,
-        title,
-        comment,
-        breed,
-        favourite,
-        votes,
-        createdAt,
-        imgUrl,
-        type
-      });
-      animal.save()
-        .then(() => res.json(`${type} saved to Database`))
-        // .then(() => res.json("OK"))
-        .catch(err => res.status(400).json({ success: false }));
-
-    // res.send(JSON.stringify("ok"));
+    Animal.find({id:id})
+    .then(data => {
+        if (data.length===0){
+            console.log("save");
+            const animal = new Animal({
+                id,
+                title,
+                comment,
+                breed,
+                favourite,
+                votes,
+                createdAt,
+                imgUrl,
+                type
+              });
+              animal.save()
+                .then(() => res.json(`${type} saved to Database`))
+                .catch(err => res.status(400).json({ success: false }));
+        }else {
+            const animal = data[0];          
+            animal.title = title;
+            animal.coment = comment;
+            animal.votes = votes;
+            animal.save()
+            .then(() => res.send(JSON.stringify("Animal updated")))
+            .catch(error => {
+                console.error(error);
+            });
+        }
+    })
 })
 
 
