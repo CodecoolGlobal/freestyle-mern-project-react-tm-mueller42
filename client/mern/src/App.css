@@ -44,8 +44,6 @@ body {
   width: 100vw;
 }
 
-
-
 .nextbutton {
  margin-top: 0.5%;
  align-self: flex-end;
@@ -57,22 +55,35 @@ body {
 
 }
 
-.randomcatsidebar {
-  width: 30vw;
-  /* background-color: ; */
+.randomimagescontainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 27.5vw;
+  margin-top: 5vw;
 }
 
-.randomcat {
-  width: 28vw;
+.randomcatimage {
+  width: 20vw;
+  margin-right: 5vw;
+
+}
+
+.randomdogimage {
+  width: 20vw;
+}
+
+.randomcatsidebar {
+  width: 30vw;
+  min-height: 90%;
+  background-color: rgb(64, 64, 64);
+  
 }
 
 .randomdogsidebar {
   width: 30vw
 }
 
-.randomdog {
-  width: 30vw;
-}
+
 
 #catImg {
   position: absolute;
