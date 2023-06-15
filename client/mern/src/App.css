@@ -43,23 +43,24 @@ body {
   flex-direction: row;
   width: 100vw;
   height: 90vw;
+  position: fixed;
 }
 
 .nextbutton {
- margin-top: 0.5%;
+ /* margin-top: 0.5%;
  align-self: flex-end;
- margin-right: 2%;
+ margin-right: 2%; */
 }
 
 .randomanimalform {
-
+  display: flex;
 }
 
 .randomimagescontainer {
   display: flex;
   flex-direction: row;
-  margin-left: 27.5vw;
   margin-top: 5vw;
+  height: 20vw;
 }
 
 .randomcatimage {
@@ -76,7 +77,6 @@ body {
   width: 18vw;
   height: 50vw;
   background-color: rgb(64, 64, 64);
-  position: absolute;
   top: 15vw;
   
 }

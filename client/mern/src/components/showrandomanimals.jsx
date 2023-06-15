@@ -107,11 +107,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     
       {!submitted &&
         <>
-          <button className="nextbutton" onClick={handleClickNext}>next</button>
-          <div className="randomimagescontainer">
-          <img className="randomcatimage" src={cat.url} ></img>
-          <img className="randomdogimage" src={dog.url} ></img>
-          </div>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randomcatsidebar">
               <label>put to favorite</label>
@@ -123,7 +118,10 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <label>vote: </label>
               <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
             </div>
-          
+            <div className="randomimagescontainer">
+              <img className="randomcatimage" src={cat.url} ></img>
+              <img className="randomdogimage" src={dog.url} ></img>
+            </div>
             <div className="randomdogsidebar">
               <label>put to favorite</label>
               <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
@@ -134,10 +132,13 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <label>vote: </label>
               <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
             </div>
-            <button type="submit">submit</button>
+            <div className="randombuttonscontainer">
+              <button type="submit">submit</button>
+              <button className="nextbutton" onClick={handleClickNext}>next</button>
+              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+            </div>
           </form>
-
-          <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+          
         </>
       }
       {
