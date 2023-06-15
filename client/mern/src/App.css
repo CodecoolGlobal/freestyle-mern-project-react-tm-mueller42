@@ -92,18 +92,13 @@ input {
 #catImg {
   position: absolute;
   top: 25%;
-  left: 2%;
+  left: -20%;
   animation: catAnimateImages 500ms linear forwards;
 }
 
 @keyframes catAnimateImages {
   0% {
     left: 0%;
-    top: 25%;
-  }
-
-  100% {
-    left: 15%;
     top: 25%;
   }
 
@@ -117,9 +112,9 @@ input {
 #vsImg {
   animation: vsAnimateImages 500ms 2s linear forwards;
   position: absolute;
-  top: 0%;
+  top: -20%;
   right: 43%;
- 
+
 }
 
 @keyframes vsAnimateImages {
@@ -139,18 +134,13 @@ input {
   animation: dogAnimateImages 500ms 1s linear forwards;
   position: absolute;
   top: 25%;
-  right: 2%;
+  right: -20%;
 }
 
 @keyframes dogAnimateImages {
 
   0% {
     right: 0%;
-    top: 25%;
-  }
-
-  100% {
-    right: 10%;
     top: 25%;
   }
 
