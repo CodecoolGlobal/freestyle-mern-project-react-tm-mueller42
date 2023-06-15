@@ -172,6 +172,21 @@ body {
     top: 25%;
   }
 }
+#teamName{
+  opacity: 0;
+  top: 45%;
+  left:33%;
+  position: absolute;
+  animation: teamAnimateImages 2s 3s linear forwards;
+}
+@keyframes teamAnimateImages {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
 .editcontainer{
@@ -181,7 +196,7 @@ body {
   flex-wrap: wrap;
   width: 20%;
   height: 20vW;
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(170, 240, 30);
   position: absolute;
   left:0px;
   top:15vw;
@@ -208,14 +223,14 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  background-color: aqua;
+  background-color: rgb(201, 204, 203);
   position: absolute;
   left:20%;
   justify-content: center;
 }
 
 #fav {
-  background-color: chartreuse;
+  background-color: rgb(181, 235, 75);
   margin: 5px;
   /* display: flex;
   flex-direction: row;
