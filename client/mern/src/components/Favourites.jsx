@@ -24,6 +24,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         backClick(false)
     }
 
+
     async function handleDelete(id) {
         try {
             await fetch(serverUrl+id, { method: 'DELETE' });
@@ -66,7 +67,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     return(
         <div className="favouritescontainer">
             {favourites && favourites.map((favourite, index) => (
-                <div className="favourite" key={favourite._id}>
+                <div id = "fav" className="favourite" key={favourite._id}>
                     <img src={favourite.imgUrl}></img>
                     <h3>{favourite.title}</h3>
                     <p>{favourite.comment}</p>

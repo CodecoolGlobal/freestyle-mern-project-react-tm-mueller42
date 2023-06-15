@@ -79,7 +79,7 @@ function App() {
       }
       {showFavourites && <Favourites
         serverUrl={serverUrl}
-        backClick={() => setShowFavourites}/>
+        backClick={setShowFavourites}/>
       }
     </>
   )
