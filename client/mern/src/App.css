@@ -57,15 +57,16 @@ body {
 
 }
 
-.randomcatcontainer {
+.randomcatsidebar {
   width: 30vw;
+  /* background-color: ; */
 }
 
 .randomcat {
   width: 28vw;
 }
 
-.randomdogcontainer {
+.randomdogsidebar {
   width: 30vw
 }
 

@@ -108,9 +108,10 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
       {!submitted &&
         <>
           <button className="nextbutton" onClick={handleClickNext}>next</button>
+          <img className="randomcat" src={cat.url} ></img>
+          <img className="randomdog" src={dog.url} ></img>
           <form onSubmit={handleSubmit} className="randomanimalform">
-            <div className="randomcatcontainer">
-            <img className="randomcat" src={cat.url} ></img><br />
+            <div className="randomcatsidebar">
             <label>put to favorite</label>
             <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
             <label>Name:
@@ -120,8 +121,8 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
             <label>vote: </label>
             <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
             </div>
-            <div className="randomdogcontainer">
-            <img className="randomdog" src={dog.url} ></img><br />
+            <div className="randomdogsidebar">
+            
             <label>put to favorite</label>
             <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
             <label>Name:
