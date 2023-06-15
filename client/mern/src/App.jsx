@@ -2,7 +2,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
 import Favourites from './components/Favourites';
-
+import Header from './components/Header';
 
 // import Todo  from './components/todo';
 
@@ -69,8 +69,9 @@ function App() {
       }
 
       {catImage && dogImage && !showFavourites && showImage &&
-
+        
         <div>
+          <Header/>
           <Showrandomanimals
             cat={catImage[0]}
             dog={dogImage[0]}
