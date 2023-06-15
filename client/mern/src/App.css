@@ -68,61 +68,107 @@ input {
   margin-left: 1%;
 }
 
-#backFromFav{
-  top:2%;
+#backFromFav {
+  top: 2%;
   left: 5%;
   position: fixed;
 }
-#fav{
-  position:relative;
-  float:inline-end;
+
+#fav {
+  position: relative;
+  float: inline-end;
   width: 300px;
   height: 500px;
 }
-#next{
-  top:2%;
-  right:5%;
-  position:absolute;
+
+#next {
+  top: 2%;
+  right: 5%;
+  position: absolute;
 }
+
 /* intro */
 
 #catImg {
   position: absolute;
   top: 25%;
-  left:2%;
+  left: -20%;
   animation: catAnimateImages 500ms linear forwards;
 }
+
 @keyframes catAnimateImages {
-  0%   { left:0%; top:25%;}
-  100% {left:23%; top:25%;}
-  100% {background-color:rgb(241, 91, 163); left:23%; top:25%;}
+  0% {
+    left: 0%;
+    top: 25%;
+  }
+
+  100% {
+    border: 2px solid rgb(249, 214, 14);
+    left: 23%;
+    top: 25%;
+  }
 }
 
 #vsImg {
-  animation: vsAnimateImages 2s 1s linear forwards;
+  animation: vsAnimateImages 500ms 2s linear forwards;
   position: absolute;
-  top:0%;
-  right: 45%;
-  width: 100px;
-  height: 100px;
+  top: -20%;
+  right: 43%;
+
 }
+
 @keyframes vsAnimateImages {
 
-  0%   { right:45%; top:0%;}
-  100% { right:45%; top:35%;width: 150px;
-    height: 150px;}
+  0% {
+    right: 43%;
+    top: 0%;
+  }
+
+  100% {
+    right: 43%;
+    top: 25%;
+  }
 }
 
 #dogImg {
   animation: dogAnimateImages 500ms 1s linear forwards;
   position: absolute;
-  top:25%;
-  right: 2%;
+  top: 25%;
+  right: -20%;
 }
 
 @keyframes dogAnimateImages {
 
-  0%   { right:0%; top:25%;}
-  100% {right:25%; top:25%;}
-  100% {background-color:rgb(243, 114, 85); right:25%; top:25%;}
+  0% {
+    right: 0%;
+    top: 25%;
+  }
+
+  100% {
+    border: 2px solid rgb(243, 114, 85);
+    right: 25%;
+    top: 25%;
+  }
+}
+
+
+/* .editcontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 20%;
+  background-color: rgb(35, 36, 36);
+  position: absolute;
+  left:0px;
+  justify-content: center;
+} */
+.favouritescontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: aqua;
+  position: absolute;
+  left:20%;
+  justify-content: center;
 }
