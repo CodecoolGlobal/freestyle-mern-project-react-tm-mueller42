@@ -152,16 +152,21 @@ input {
 }
 
 
-/* .editcontainer{
+.editcontainer{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 20%;
+  height: 60%;
   background-color: rgb(35, 36, 36);
-  position: absolute;
+  position: fixed;
+  top:10%;
   left:0px;
   justify-content: center;
-} */
+  color:white;
+  justify-content: space-between;
+ 
+}
 .favouritescontainer{
   display: flex;
   flex-direction: row;
