@@ -54,6 +54,7 @@ body {
 
 .randomanimalform {
   display: flex;
+  width: 100%;
 }
 
 .randomimagescontainer {
@@ -61,6 +62,7 @@ body {
   flex-direction: row;
   margin-top: 5vw;
   height: 20vw;
+  width: 100%;
 }
 
 .randomcatimage {
@@ -75,17 +77,24 @@ body {
 
 .randomcatsidebar {
   width: 18vw;
-  height: 50vw;
+  height: 60vw;
   background-color: rgb(64, 64, 64);
-  top: 15vw;
+  color: white;
   
 }
 
 .randomdogsidebar {
-  width: 30vw
+  width: 18vw;
+  height: 60vw;
+  background-color: rgb(64, 64, 64);
+  color: white;
+  margin-left: auto;
 }
 
-
+.randombuttonscontainer {
+  position: absolute;
+  margin-left: 60vw;
+}
 
 #catImg {
   position: absolute;
