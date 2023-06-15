@@ -66,6 +66,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
           
     return(
         <div className="favouritescontainer">
+        <div classname="favouriteslist">
             {favourites && favourites.map((favourite, index) => (
                 <div id = "fav" className="favourite" key={favourite._id}>
                     <img src={favourite.imgUrl}></img>
@@ -76,6 +77,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
                 </div>
             ))}
+        </div>
             {showEdit &&    
             <div className="editcontainer">
                 <form onSubmit={handleSubmit}>
