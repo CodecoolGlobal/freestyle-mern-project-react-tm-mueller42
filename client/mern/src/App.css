@@ -103,11 +103,11 @@ body {
 
 .randombuttonscontainer {
   position: absolute;
-  margin-left: 58vw;
+  margin-left: 60vw;
   margin-top: 2vw;
   display: flex;
   justify-content: space-between;
-  width: 25vw;
+  width: 21vw;
 }
 
 .randombuttonscontainer > button {

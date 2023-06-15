@@ -133,9 +133,9 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
             </div>
             <div className="randombuttonscontainer">
-              <button type="submit">submit</button>
-              <button className="nextbutton" onClick={handleClickNext}>next</button>
-              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+              <button type="submit">Submit</button>
+              <button className="nextbutton" onClick={handleClickNext}>Next</button>
+              <button type="button" onClick={handleClickShowFavourites}>Favorites</button>
             </div>
           </form>
           
