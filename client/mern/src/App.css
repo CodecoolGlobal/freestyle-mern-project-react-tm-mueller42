@@ -131,6 +131,11 @@ input[type='checkbox'] {
   accent-color: rgb(209,148,190);
 }
 
+input:focus {
+  background-color: rgb(209,148,190);
+}
+
+
 @keyframes catAnimateImages {
   0% {
     left: 0%;
