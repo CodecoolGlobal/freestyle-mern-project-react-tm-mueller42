@@ -150,3 +150,25 @@ input {
     top: 25%;
   }
 }
+
+
+/* .editcontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 20%;
+  background-color: rgb(35, 36, 36);
+  position: absolute;
+  left:0px;
+  justify-content: center;
+} */
+.favouritescontainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: aqua;
+  position: absolute;
+  left:20%;
+  justify-content: center;
+}
