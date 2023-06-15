@@ -106,7 +106,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     <>
     
       {!submitted &&
-        <>
+        <div>
           <button className="nextbutton" onClick={handleClickNext}>next</button>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randomcatcontainer">
@@ -135,13 +135,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
           </form>
 
           <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
-        <>
+        </div>
       }
       {
         submitted &&
         <>
 
-          
           submitted
           <br></br>
           <button onClick={() => {setSubmitted(false)}}>back</button>

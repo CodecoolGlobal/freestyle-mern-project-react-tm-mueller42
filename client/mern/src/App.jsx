@@ -60,6 +60,7 @@ function App() {
 
   return (
     <>
+    <Header/>
       {!showImage && setTimeout(() => finishIntro(), 5000) &&
         <div id="intro">
           <img id="catImg" src="../src/images/cat.png"></img>
@@ -71,7 +72,6 @@ function App() {
       {catImage && dogImage && !showFavourites && showImage &&
         
         <div className='randomanimals'>
-          <Header/>
           <Showrandomanimals
             cat={catImage[0]}
             dog={dogImage[0]}
