@@ -68,18 +68,25 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 5vw;
-  height: 20vw;
+  height: 50vh;
   width: 100%;
+  /* background-color: aquamarine; */
 }
 
 .randomcatimage {
-  width: 20vw;
-  margin-right: 5vw;
-
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomdogimage {
-  width: 20vw;
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomcatsidebar {
@@ -87,7 +94,7 @@ body {
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
-  
+
 }
 
 .randomdogsidebar {
@@ -182,7 +189,7 @@ body {
   width: 20%;
   height: 20vW;
   background-color: rgb(177, 177, 177);
-  position: absolute;
+  position: fixed;
   left:0px;
   top:15vw;
   justify-content: center;

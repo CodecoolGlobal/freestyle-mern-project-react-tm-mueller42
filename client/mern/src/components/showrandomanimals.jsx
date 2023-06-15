@@ -109,7 +109,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randomcatsidebar">
-              <label>put to favorite</label>
+              <label>Add cat to favourites</label>
               <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
               <label>Name:
                 <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
@@ -123,7 +123,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <img className="randomdogimage" src={dog.url} ></img>
             </div>
             <div className="randomdogsidebar">
-              <label>put to favorite</label>
+              <label>Add dog to favourites</label>
               <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
               <label>Name:
                 <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />

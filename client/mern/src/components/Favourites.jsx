@@ -35,8 +35,12 @@ export default function ShowFavourites({ backClick, serverUrl }) {
           }
         };
     
-        function handleEdit(id) {
+        function handleEdit(favourite) {
+            const id = favourite._id;
             setShowEdit(id);
+            if(favourite.comment){setEditedComment(favourite.comment)};
+            if(favourite.title){setEditedTitle(favourite.title)};
+            if(favourite.votes){setEditedVote(favourite.votes)};
         }
 
         function handleSubmit(e) {
@@ -74,7 +78,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <p>{favourite.comment}</p>
                     <p>{favourite.votes}</p>
                     <button className="deletefavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
-                    <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
+                    <button className="editfavourite" onClick={() => handleEdit(favourite)}>edit</button>
                 </div>
             ))}
         </div>
