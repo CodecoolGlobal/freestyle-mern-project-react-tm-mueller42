@@ -32,6 +32,13 @@ body {
   width: 18vw;
 }
 
+#backFromFav {
+  position: fixed;
+  top: 11vw;
+  left:2vw;
+  width: 16vW;
+}
+
 .headertitle {
   width: 18vw;
   margin-right: 2%;
@@ -154,16 +161,35 @@ body {
 }
 
 
-/* .editcontainer{
+.editcontainer{
+  padding-top:10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 20%;
-  background-color: rgb(35, 36, 36);
+  height: 20vW;
+  background-color: rgb(177, 177, 177);
   position: absolute;
   left:0px;
+  top:15vw;
   justify-content: center;
+}
+
+/* .editcontainer>form>label {
+  display:flex;
 } */
+
+.editcontainer>form>label>input[type=text] {
+  width: 18vw;
+}
+.editcontainer>form>label>input[type=number] {
+  width: 18vw;
+  margin-bottom: 5px;
+}
+.editcontainer>form>label>textarea {
+  width: 18vw;
+}
+
 .favouritescontainer{
   display: flex;
   flex-direction: row;
