@@ -2,21 +2,31 @@
 #root {
   max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
+
 
 .headercontainer {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 20%;
+  height: 15%;
   background-color: rgb(175, 225, 200);
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+  position: fixed;
 }
 
 .headerlogo {
   width: 20%;
 }
+
+.headertitle {
+  width: 20%;
+  margin-right: 2%;
+}
+
 
 
 
