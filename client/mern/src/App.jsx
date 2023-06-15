@@ -71,7 +71,7 @@ function App() {
 
       {catImage && dogImage && !showFavourites && showImage &&
         
-        <div className='randomanimals'>
+        <div className='randomanimalscontainer'>
           <Showrandomanimals
             cat={catImage[0]}
             dog={dogImage[0]}
