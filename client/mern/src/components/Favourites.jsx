@@ -19,6 +19,7 @@ export default function ShowFavourites({ backClick }) {
         backClick(false)
     }
 
+
     async function handleDelete(id) {
         try {
             await fetch(`http://localhost:4000/animal/${id}`, { method: 'DELETE' });
@@ -30,18 +31,20 @@ export default function ShowFavourites({ backClick }) {
         };
     
 
+
     return(
         <div className="favouritescontainer">
             {favourites && favourites.map((favourite, index) => (
-                <div className="favourite" key={favourite._id}>
+                <div id = "fav" className="favourite" key={favourite._id}>
                     <img src={favourite.imgUrl}></img>
                     <h3>{favourite.title}</h3>
                     <p>{favourite.comment}</p>
                     <p>{favourite.votes}</p>
                     <button className="deleteFavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
+                    <br/>
                 </div>
             ))}
-            <button onClick={handleBackClick}>back</button>
+            <button id= "backFromFav" onClick={handleBackClick}>back</button>
         </div>
     )
 }

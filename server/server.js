@@ -3,12 +3,17 @@ const express = require('express');
 let Animal = require('./models/animal.js');
 const cors = require("cors");
 const fs = require("fs");
+const { error } = require('console');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(function(req, res, next) {
+
+mongoose.connect("mongodb+srv://onclickmagic:onClickMongo@onclickmagic.8blvh8a.mongodb.net/");
+
+
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:5173");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH");
@@ -30,6 +35,12 @@ app.get("/catnames", (req, res) => {
     const data = readDataFile("./names.json");
     res.send(data.cats);
 })
+app.get('/animal', (req, res) => {
+    Animal.find({})
+    .then(data => res.json(data))
+    .catch(error => res.json(error))
+
+})
 
 // app.get("/animal/:id", (req, res) => {
 //     const searchId = req.params.id;
@@ -44,8 +55,10 @@ app.get("/animal", (req,res) => {
     .catch(error => res.json(error))
 });
 
+
 app.post ("/animal", (req,res) => {
     // console.log(req.body);
+
     const id = req.body.id;
     const title = req.body.title;
     const comment = req.body.comment;
@@ -55,6 +68,7 @@ app.post ("/animal", (req,res) => {
     const createdAt = Date.now();
     const imgUrl = req.body.imgUrl;
     const type = req.body.type;
+
 
     Animal.find({id:id})
     .then(data => {
@@ -86,6 +100,7 @@ app.post ("/animal", (req,res) => {
             });
         }
     })
+
 })
 
 app.get('/animal', (req, res) => {

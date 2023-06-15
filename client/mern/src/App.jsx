@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
 import Favourites from './components/Favourites';
 
+
 // import Todo  from './components/todo';
-// import './App.css'
+
 
 function App() {
   const catKey = `live_9hHoRgxnuzyI8OwZQN1DfcPacnqYhMr1A9YZ6RNrTFj1Fc18uUdqFcOGSpr2nBX4`;
@@ -18,55 +19,71 @@ function App() {
   const [currentCatData, setCurrentCatData] = useState(null);
   const [currentDogData, setCurrentDogData] = useState(null);
   const [showFavourites, setShowFavourites] = useState(false);
-
+  const [showImage, setShowImage] = useState(false)
 
   const fetchAnimals = (catUrl, dogUrl) => {
     fetch(catUrl)
-    .then(response => response.json())
-    .then(data => {
-      setCatImage(data);
-    })
-  fetch(dogUrl)
-    .then(response => response.json())
-    .then(data => {
-      setDogImage(data);
-    })
+      .then(response => response.json())
+      .then(data => {
+        setCatImage(data);
+      })
+    fetch(dogUrl)
+      .then(response => response.json())
+      .then(data => {
+        setDogImage(data);
+      })
   }
 
   useEffect(() => {
     fetchAnimals(catUrl, dogUrl);
   }, [])
 
-const handleClickShowFavourites = (e) => {
-  e.preventDefault();
-  setShowFavourites(true);
-}
+  const handleClickShowFavourites = (e) => {
+    e.preventDefault();
+    setShowFavourites(true);
+  }
 
-const handleshowFavourites = () => {
-  setShowFavourites(true);
-}
+  const handleshowFavourites = () => {
+    setShowFavourites(true);
+  }
 
-const handleLoadNext = () => {
-  fetchAnimals(catUrl, dogUrl);
-}
+  const handleLoadNext = () => {
+    fetchAnimals(catUrl, dogUrl);
+  }
+  const finishIntro = () => {
+    document.getElementById("intro").innerHTML = "";
+    setShowImage(true)
+  }
 
   return (
     <>
-      {catImage && dogImage && !showFavourites &&
+      {setTimeout(() => finishIntro(), 5000) &&
+        <div id="intro">
+          <img id="catImg" src="../src/images/cat.png"></img>
+          <img id="vsImg" src="../src/images/vs.png"></img>
+          <img id="dogImg" src="../src/images/dog.png"></img>
+        </div>
+
+      }
+
+      {catImage && dogImage && !showFavourites && showImage &&
 
         <div>
 
+
           <Showrandomanimals
-          cat = {catImage[0]}
-          dog = {dogImage[0]}
-          showFavourites = {handleshowFavourites}
-          loadNext={handleLoadNext}
-          serverUrl = {serverUrl}
+            cat={catImage[0]}
+            dog={dogImage[0]}
+            showFavourites={handleshowFavourites}
+            loadNext={handleLoadNext}
+            serverUrl={serverUrl}
           />
         </div>
       }
       {showFavourites && <Favourites
-        backClick={() => setShowFavourites}/>
+
+        backClick={() => setShowFavourites} />
+
       }
     </>
   )
