@@ -77,13 +77,13 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             ))}
             {showEdit &&    
             <div className="editcontainer">
-                <form onSubmit={() => handleSubmit()}>
+                <form onSubmit={handleSubmit}>
                     <label>Name:</label>
-                    <input type="text" value={editedTitle?editedTitle:""} onChange={e=>setEditedTitle(e.target.value)}/>
+                    <input type="text" value={editedTitle?editedTitle:""} onChange={e =>setEditedTitle(e.target.value)}/>
                     <label>Comment:</label>
-                    <input type="text" value={editedComment?editedComment:""} onChange={e=>setEditedComment(e.target.value)}/>
+                    <input type="text" value={editedComment?editedComment:""} onChange={e =>setEditedComment(e.target.value)}/>
                     <label>Rating:</label>
-                    <input type="number" value={editedVote?editedVote:""} onChange={e=>setEditedVote(e.target.value)}/>
+                    <input type="number" value={editedVote?editedVote:""} onChange={e =>setEditedVote(e.target.value)}/>
                 <button type="submit">Save</button>
                 </form>
             </div>}
