@@ -1,95 +1,111 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-img {
-  /* border: 2px solid gray; */
-
-  padding: 2%;
-  max-height: 250px;
-  max-width: 250px;
-}
-
-button {
-  padding: 2%;
-  border: 20px solid black;
-}
-
-form {
-  border: 2px solid black;
-  width: 104%;
+html {
   height: 100%;
 }
 
-input {
-  float: right;
-  margin-left: 1%;
+body {
+  height: 100%;
 }
 
-#backFromFav {
-  top: 2%;
-  left: 5%;
+.headercontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 10vw;
+  background-color: rgb(175, 225, 200);
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
   position: fixed;
 }
 
-#fav {
-  position: relative;
-  float: inline-end;
-  width: 300px;
-  height: 500px;
+.headerlogo {
+  width: 18vw;
 }
 
-#next {
-  top: 2%;
-  right: 5%;
+#backFromFav {
+  position: fixed;
+  top: 11vw;
+  left:2vw;
+  width: 16vW;
+}
+
+.headertitle {
+  width: 18vw;
+  margin-right: 2%;
+}
+
+.randomanimalscontainer {
+  margin-top: 10vw;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 90vw;
+  position: fixed;
+}
+
+.nextbutton {
+ /* margin-top: 0.5%;
+ align-self: flex-end;
+ margin-right: 2%; */
+}
+
+.randomanimalform {
+  display: flex;
+  width: 100%;
+}
+
+.randomimagescontainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5vw;
+  height: 20vw;
+  width: 100%;
+}
+
+.randomcatimage {
+  width: 20vw;
+  margin-right: 5vw;
+
+}
+
+.randomdogimage {
+  width: 20vw;
+}
+
+.randomcatsidebar {
+  width: 18vw;
+  height: 60vw;
+  background-color: rgb(64, 64, 64);
+  color: white;
+  
+}
+
+.randomdogsidebar {
+  width: 18vw;
+  height: 60vw;
+  background-color: rgb(64, 64, 64);
+  color: white;
+  margin-left: auto;
+}
+
+.randombuttonscontainer {
   position: absolute;
+  margin-left: 60vw;
 }
-
-/* intro */
 
 #catImg {
+  max-height: 250px;
+  max-width: 250px;
   position: absolute;
   top: 25%;
   left: -20%;
@@ -110,6 +126,8 @@ input {
 }
 
 #vsImg {
+  max-height: 250px;
+  max-width: 250px;
   animation: vsAnimateImages 500ms 2s linear forwards;
   position: absolute;
   top: -20%;
@@ -131,6 +149,10 @@ input {
 }
 
 #dogImg {
+  max-height: 250px;
+  max-width: 250px;
+  max-height: 250px;
+  max-width: 250px;
   animation: dogAnimateImages 500ms 1s linear forwards;
   position: absolute;
   top: 25%;
@@ -150,30 +172,80 @@ input {
     top: 25%;
   }
 }
+#teamName{
+  opacity: 0;
+  top: 45%;
+  left:33%;
+  position: absolute;
+  animation: teamAnimateImages 2s 3s linear forwards;
+}
+@keyframes teamAnimateImages {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
 .editcontainer{
+  padding-top:10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 20%;
-  height: 60%;
-  background-color: rgb(35, 36, 36);
-  position: fixed;
-  top:10%;
+  height: 20vW;
+  background-color: rgb(170, 240, 30);
+  position: absolute;
   left:0px;
+  top:15vw;
   justify-content: center;
-  color:white;
-  justify-content: space-between;
- 
 }
+
+/* .editcontainer>form>label {
+  display:flex;
+} */
+
+.editcontainer>form>label>input[type=text] {
+  width: 18vw;
+}
+.editcontainer>form>label>input[type=number] {
+  width: 18vw;
+  margin-bottom: 5px;
+}
+.editcontainer>form>label>textarea {
+  width: 18vw;
+}
+
 .favouritescontainer{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  background-color: aqua;
+  background-color: rgb(201, 204, 203);
   position: absolute;
   left:20%;
   justify-content: center;
+}
+
+#fav {
+  background-color: rgb(181, 235, 75);
+  margin: 5px;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+  width: 30%;
+  /* position: absolute;
+  left:20%; */
+  justify-content: center;
+  text-align: center;
+  /* position: relative;
+  float: inline-end; */
+  /* width: 300px;
+  height: 500px; */
+  /* width: 30%; */
+}
+#fav>img {
+  width: 90%;
 }

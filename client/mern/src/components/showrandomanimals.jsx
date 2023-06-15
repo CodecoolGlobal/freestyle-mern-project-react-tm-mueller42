@@ -107,43 +107,44 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     
       {!submitted &&
         <>
-          <button id = "next" onClick={handleClickNext}>next</button>
-          <form onSubmit={handleSubmit}>
-
-            <button type="submit">submit</button>
-            <br /><br />
-            <img src={cat.url} ></img><br />
-            <label>put to favorite</label>
-
-            <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
-            <label>Name:
-              <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
-            <label>comment:
-              <input type="text" value={catData.comment ? catData.comment : ""} onChange={e => setCatData({ ...catData, comment: e.target.value })}></input></label><br/>
-            <label>vote: </label>
-            <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
-
-
-            <img src={dog.url} ></img><br />
-            <label>put to favorite</label>
-
-            <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
-            <label>Name:
-              <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />
-            <label>comment:
-              <input type="text" value={dogData.comment ? dogData.comment : ""} onChange={e => setDogData({ ...dogData, comment: e.target.value })}></input></label><br />
-            <label>vote: </label>
-            <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
+          <form onSubmit={handleSubmit} className="randomanimalform">
+            <div className="randomcatsidebar">
+              <label>put to favorite</label>
+              <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
+              <label>Name:
+                <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
+              <label>comment:
+                <input type="text" value={catData.comment ? catData.comment : ""} onChange={e => setCatData({ ...catData, comment: e.target.value })}></input></label><br/>
+              <label>vote: </label>
+              <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
+            </div>
+            <div className="randomimagescontainer">
+              <img className="randomcatimage" src={cat.url} ></img>
+              <img className="randomdogimage" src={dog.url} ></img>
+            </div>
+            <div className="randomdogsidebar">
+              <label>put to favorite</label>
+              <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
+              <label>Name:
+                <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />
+              <label>comment:
+                <input type="text" value={dogData.comment ? dogData.comment : ""} onChange={e => setDogData({ ...dogData, comment: e.target.value })}></input></label><br />
+              <label>vote: </label>
+              <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
+            </div>
+            <div className="randombuttonscontainer">
+              <button type="submit">submit</button>
+              <button className="nextbutton" onClick={handleClickNext}>next</button>
+              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+            </div>
           </form>
-
-          <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+          
         </>
       }
       {
         submitted &&
         <>
 
-          
           submitted
           <br></br>
           <button onClick={() => {setSubmitted(false)}}>back</button>

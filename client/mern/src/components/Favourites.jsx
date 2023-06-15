@@ -58,39 +58,38 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     })
                     .catch(error => {
                         console.log(error);
-                    });
-            }
-        })
-        setShowEdit(null)
-    }
-
-    return (
+                        });
+                }
+            })
+            setShowEdit(null)
+        }
+          
+    return(
         <div>
-            <div className="favouritescontainer">
-                {favourites && favourites.map((favourite, index) => (
-                    <div id="fav" className="favourite" key={favourite._id}>
-                        <img src={favourite.imgUrl}></img>
-                        <h3>{favourite.title}</h3>
-                        <p>{favourite.comment}</p>
-                        <p>{favourite.votes}</p>
-                        <button className="deletefavourite" onClick={() => handleDelete(favourite._id)}>delete</button>
-                        <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
-                    </div>
-                ))}
-            </div>
-            {showEdit &&
-                <div className="editcontainer">
-                    <form onSubmit={handleSubmit}>
-
-                        <label>Name:</label>
-                        <input type="text" value={editedTitle ? editedTitle : ""} onChange={e => setEditedTitle(e.target.value)} /><br />
-                        <label>Comment:</label>
-                        <input type="text" value={editedComment ? editedComment : ""} onChange={e => setEditedComment(e.target.value)} /><br />
-                        <label>Rating:</label>
-                        <input type="number" value={editedVote ? editedVote : ""} onChange={e => setEditedVote(e.target.value)} /><br />
-                        <button type="submit">Save</button>
-                    </form>
-                </div>}
+        <div className="favouritescontainer">
+            {favourites && favourites.map((favourite, index) => (
+                <div id = "fav" className="favourite" key={favourite._id}>
+                    <img src={favourite.imgUrl}></img>
+                    <h3>{favourite.title}</h3>
+                    <p>{favourite.comment}</p>
+                    <p>{favourite.votes}</p>
+                    <button className="deletefavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
+                    <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
+                </div>
+            ))}
+        </div>
+            {showEdit &&    
+            <div className="editcontainer">
+                <form onSubmit={handleSubmit}>
+                <label>Name:
+                    <br></br><input type="text" value={editedTitle?editedTitle:""} onChange={e=>setEditedTitle(e.target.value)}/></label><br/>
+                    <label>Comment:
+                    <br></br><textarea rows="2" cols="20" value={editedComment?editedComment:""} onChange={e=>setEditedComment(e.target.value)}></textarea></label><br/>
+                    <label>Rating:
+                    <br></br><input type="number" value={editedVote?editedVote:""} onChange={e=>setEditedVote(e.target.value)}/></label><br/>
+                    <button type="submit">Save</button>
+                </form>
+            </div>}
             <button id="backFromFav" onClick={handleBackClick}>back</button>
         </div>
     )

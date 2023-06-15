@@ -2,7 +2,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import Showrandomanimals from "./components/showrandomanimals"
 import Favourites from './components/Favourites';
-
+import Header from './components/Header';
 
 // import Todo  from './components/todo';
 
@@ -60,20 +60,21 @@ function App() {
 
   return (
     <>
-      {!showImage && setTimeout(() => finishIntro(), 5000) &&
+    <Header/>
+      {!showImage && setTimeout(() => finishIntro(), 6000) &&
         <div id="intro">
+          <p id="groupName">something</p>
           <img id="catImg" src="../src/images/cat.png"></img>
           <img id="vsImg" src="../src/images/vs.png"></img>
           <img id="dogImg" src="../src/images/dog.png"></img>
+          <img id="teamName" src="../src/images/OnClick-Magic.png"></img>
+          
         </div>
-
       }
 
       {catImage && dogImage && !showFavourites && showImage &&
-
-        <div>
-
-
+        
+        <div className='randomanimalscontainer'>
           <Showrandomanimals
             cat={catImage[0]}
             dog={dogImage[0]}
