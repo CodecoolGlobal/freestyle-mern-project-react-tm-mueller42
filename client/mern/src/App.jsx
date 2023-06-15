@@ -52,13 +52,15 @@ function App() {
   }
   
   const finishIntro = () => {
-   document.getElementById("intro").innerHTML = "";
+
+    // document.getElementById("intro").innerHTML = "";
+
     setShowImage(true)
   }
 
   return (
     <>
-      {setTimeout(() => finishIntro(), 5000) &&
+      {!showImage && setTimeout(() => finishIntro(), 5000) &&
         <div id="intro">
           <img id="catImg" src="../src/images/cat.png"></img>
           <img id="vsImg" src="../src/images/vs.png"></img>
@@ -82,9 +84,8 @@ function App() {
         </div>
       }
       {showFavourites && <Favourites
-
-        backClick={() => setShowFavourites} />
-
+        serverUrl={serverUrl}
+        backClick={setShowFavourites}/>
       }
     </>
   )
