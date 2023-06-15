@@ -53,11 +53,20 @@ body {
   position: fixed;
 }
 
-.nextbutton {
- /* margin-top: 0.5%;
- align-self: flex-end;
- margin-right: 2%; */
+.submitcontainer {
+  position: absolute;
+  left:50%;
+  top:10%;
+  transform: translate(-50%);
+  /* background-color: aqua; */
+  text-align: center;
 }
+
+/* .nextbutton {
+ margin-top: 0.5%;
+ align-self: flex-end;
+ margin-right: 2%;
+} */
 
 .randomanimalform {
   display: flex;
@@ -107,8 +116,13 @@ body {
 
 .randombuttonscontainer {
   position: absolute;
-  margin-left: 60vw;
+  left: 50%;
+  transform:translate(-50%);
 }
+.randombuttonscontainer>button {
+  display: inline;
+}
+
 
 #catImg {
   max-height: 250px;

@@ -42,13 +42,6 @@ app.get('/animal', (req, res) => {
 
 })
 
-// app.get("/animal/:id", (req, res) => {
-//     const searchId = req.params.id;
-//     Animal.find({id:searchId})
-//     .then((data) => res.json(data))
-//     .catch(error => res.json(error))
-// })
-
 app.get("/animal", (req,res) => {
     Animal.find({})
     .then(data => res.json(data))
@@ -57,8 +50,6 @@ app.get("/animal", (req,res) => {
 
 
 app.post ("/animal", (req,res) => {
-    // console.log(req.body);
-
     const id = req.body.id;
     const title = req.body.title;
     const comment = req.body.comment;
