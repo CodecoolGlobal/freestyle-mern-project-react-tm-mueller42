@@ -6,9 +6,6 @@ import React, { useState } from "react";
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl }) {
 
 
-  const [catToAdd, setCatToAdd] = useState(null);
-  const [dogToAdd, setDogToAdd] = useState(null);
-
   const [submitted, setSubmitted] = useState(false);
 
   const [catData, setCatData] = useState({});
@@ -39,13 +36,10 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
 
 
   const handleSubmit = (e) => {
-    // console.log(catData, dogData);
     e.preventDefault();
-
     if (Object.keys(catData).length > 0) {
       if (!cat.breed) { cat.breed = "" }
       const newCat = new Animal(cat.id, catData.name, catData.comment, cat.breed, catData.addtofav, catData.vote, Date.now(), cat.url, "cat");
-      // setCatToAdd(newCat);
       fetch(serverUrl, {
         method: "POST",
         body: JSON.stringify(newCat),
@@ -63,7 +57,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     if (Object.keys(dogData).length > 0) {
       if (!dog.breed) { dog.breed = "" }
       const newDog = new Animal(dog.id, dogData.name, dogData.comment, dog.breed, dogData.addtofav, dogData.vote, Date.now(), dog.url, "dog");
-      // setDogToAdd(newDog);
       fetch(serverUrl, {
         method: "POST",
         body: JSON.stringify(newDog),
@@ -82,14 +75,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
 
 
   }
-  // if (addFavDog) {
-  //   const newDog = new Animal(dogName, dogComment, dog.breed, addFavDog, dogVote, Date.now(), dog.url, "dog");
-  //   setDogToAdd(newDog);
-  //   console.log("dog: ", newDog);
-  // }
-  // setSubmitted(true);
-
-
 
   const handleClickNext = () => {
     loadNext();
@@ -109,7 +94,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randomcatsidebar">
-              <label>put to favorite</label>
+              <label>Add cat to favourites</label>
               <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
               <label>Name:
                 <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
@@ -123,7 +108,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <img className="randomdogimage" src={dog.url} ></img>
             </div>
             <div className="randomdogsidebar">
-              <label>put to favorite</label>
+              <label>Add dog to favourites</label>
               <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
               <label>Name:
                 <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />
@@ -143,14 +128,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
       }
       {
         submitted &&
-        <>
-
+        <div className = "submitcontainer">
           submitted
           <br></br>
-          <button onClick={() => {setSubmitted(false)}}>back</button>
-
-          <button onClick={handleClickNext}>next</button>
-        </>
+          <button className = "backfromsubmitted" onClick={() => {setSubmitted(false)}}>back</button>
+          <button className = "nextbutton" onClick={handleClickNext}>next</button>
+        </div>
       }
 
     </>

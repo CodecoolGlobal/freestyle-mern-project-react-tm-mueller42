@@ -32,12 +32,16 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             setFavourites(updatedFavourites);
         } catch (error) {
             console.error('Error deleting todo:', error);
+          }
+        };
+    
+        function handleEdit(favourite) {
+            const id = favourite._id;
+            setShowEdit(id);
+            if(favourite.comment){setEditedComment(favourite.comment)};
+            if(favourite.title){setEditedTitle(favourite.title)};
+            if(favourite.votes){setEditedVote(favourite.votes)};
         }
-    };
-
-    function handleEdit(id) {
-        setShowEdit(id);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -74,7 +78,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <p>{favourite.comment}</p>
                     <p>{favourite.votes}</p>
                     <button className="deletefavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
-                    <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
+                    <button className="editfavourite" onClick={() => handleEdit(favourite)}>edit</button>
                 </div>
             ))}
         </div>
