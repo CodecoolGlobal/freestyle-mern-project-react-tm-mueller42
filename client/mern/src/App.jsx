@@ -66,6 +66,7 @@ const handleLoadNext = () => {
         </div>
       }
       {showFavourites && <Favourites
+        serverUrl={serverUrl}
         backClick={() => setShowFavourites}/>
       }
     </>
