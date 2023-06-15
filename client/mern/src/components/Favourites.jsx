@@ -38,7 +38,8 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             setShowEdit(id);
         }
 
-        function handleSubmit() {
+        function handleSubmit(e) {
+            e.preventDefault();
             favourites.map(favourite => {
                 if(favourite._id === showEdit) {
                     favourite.title = editedTitle;
@@ -59,10 +60,8 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                         });
                 }
             })
+            setShowEdit(null)
         }
-
-       
-        
           
     return(
         <div className="favouritescontainer">
