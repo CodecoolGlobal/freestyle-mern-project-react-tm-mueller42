@@ -50,8 +50,9 @@ function App() {
   const handleLoadNext = () => {
     fetchAnimals(catUrl, dogUrl);
   }
+  
   const finishIntro = () => {
-    document.getElementById("intro").innerHTML = "";
+   document.getElementById("intro").innerHTML = "";
     setShowImage(true)
   }
 
