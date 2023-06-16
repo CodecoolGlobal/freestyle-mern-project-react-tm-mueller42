@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 export default function ShowFavourites({ backClick, serverUrl }) {
 
@@ -8,17 +8,17 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [editedComment, setEditedComment] = useState("");
     const [editedVote, setEditedVote] = useState("");
 
-    
+
     useEffect(() => {
         fetch(serverUrl)
-        .then((response) => response.json())
-        .then((data) => {
-            setFavourites(data);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    }, []); 
+            .then((response) => response.json())
+            .then((data) => {
+                setFavourites(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
     function handleBackClick() {
         backClick(false)
@@ -27,36 +27,40 @@ export default function ShowFavourites({ backClick, serverUrl }) {
 
     async function handleDelete(id) {
         try {
-            await fetch(serverUrl+id, { method: 'DELETE' });
+            await fetch(serverUrl + id, { method: 'DELETE' });
             const updatedFavourites = favourites.filter(favourite => favourite._id !== id);
             setFavourites(updatedFavourites);
-          } catch (error) {
+        } catch (error) {
             console.error('Error deleting todo:', error);
           }
         };
     
-        function handleEdit(id) {
+        function handleEdit(favourite) {
+            const id = favourite._id;
             setShowEdit(id);
+            if(favourite.comment){setEditedComment(favourite.comment)};
+            if(favourite.title){setEditedTitle(favourite.title)};
+            if(favourite.votes){setEditedVote(favourite.votes)};
         }
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            favourites.map(favourite => {
-                if(favourite._id === showEdit) {
-                    favourite.title = editedTitle;
-                    favourite.comment = editedComment;
-                    favourite.vote = editedVote;
+    function handleSubmit(e) {
+        e.preventDefault();
+        favourites.map(favourite => {
+            if (favourite._id === showEdit) {
+                favourite.title = editedTitle;
+                favourite.comment = editedComment;
+                favourite.vote = editedVote;
 
-                    fetch(serverUrl, {
-                        method:"POST",
-                        body:JSON.stringify(favourite),
-                        headers:{'Content-Type': 'application/json; charset=UTF-8'}
-                    })
-                        .then(response => response.json())
-                        .then(data => {
+                fetch(serverUrl, {
+                    method: "POST",
+                    body: JSON.stringify(favourite),
+                    headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+                })
+                    .then(response => response.json())
+                    .then(data => {
                         console.log(data);
-                        })
-                        .catch(error => {
+                    })
+                    .catch(error => {
                         console.log(error);
                         });
                 }
@@ -74,7 +78,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <p>{favourite.comment}</p>
                     <p>{favourite.votes}</p>
                     <button className="deletefavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
-                    <button className="editfavourite" onClick={() => handleEdit(favourite._id)}>edit</button>
+                    <button className="editfavourite" onClick={() => handleEdit(favourite)}>edit</button>
                 </div>
             ))}
         </div>

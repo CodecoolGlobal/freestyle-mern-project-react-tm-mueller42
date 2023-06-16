@@ -44,6 +44,15 @@ body {
   margin-right: 2%;
 }
 
+.submitcontainer {
+  position: absolute;
+  left:50%;
+  top:10%;
+  transform: translate(-50%);
+  /* background-color: aqua; */
+  text-align: center;
+}
+
 .randomanimalscontainer {
   margin-top: 10vw;
   display: flex;
@@ -121,6 +130,7 @@ body {
   background-color: rgb(209,148,190);
 }
 
+
 #catImg {
   max-height: 250px;
   max-width: 250px;
@@ -129,19 +139,6 @@ body {
   left: -20%;
   animation: catAnimateImages 500ms linear forwards;
 }
-
-.checkbox {
-  width: 2vw;
-}
-
-input[type='checkbox'] {
-  accent-color: rgb(209,148,190);
-}
-
-input:focus {
-  background-color: rgb(209,148,190);
-}
-
 
 @keyframes catAnimateImages {
   0% {
@@ -203,6 +200,21 @@ input:focus {
     top: 25%;
   }
 }
+#teamName{
+  opacity: 0;
+  top: 45%;
+  left:33%;
+  position: absolute;
+  animation: teamAnimateImages 2s 3s linear forwards;
+}
+@keyframes teamAnimateImages {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
 .editcontainer{
@@ -212,8 +224,8 @@ input:focus {
   flex-wrap: wrap;
   width: 20%;
   height: 20vW;
-  background-color: rgb(177, 177, 177);
-  position: absolute;
+  background-color: rgb(170, 240, 30);
+  position: fixed;
   left:0px;
   top:15vw;
   justify-content: center;
@@ -239,14 +251,14 @@ input:focus {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  background-color: aqua;
+  background-color: rgb(201, 204, 203);
   position: absolute;
   left:20%;
   justify-content: center;
 }
 
 #fav {
-  background-color: chartreuse;
+  background-color: rgb(181, 235, 75);
   margin: 5px;
   /* display: flex;
   flex-direction: row;
