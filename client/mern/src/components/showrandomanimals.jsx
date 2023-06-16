@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 
-
-
-
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl }) {
 
-
   const [submitted, setSubmitted] = useState(false);
-
   const [catData, setCatData] = useState({});
   const [dogData, setDogData] = useState({});
-
-
-
 
   class Animal {
     constructor(id, title, comment, breed, favorite, votes, createdAt, imgUrl, type) {
@@ -32,8 +24,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     e.preventDefault();
     showFavourites();
   }
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,8 +62,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     }
     if (Object.keys(catData).length > 0 || Object.keys(dogData).length > 0)
       setSubmitted(true);
-
-
   }
 
   const handleClickNext = () => {
@@ -84,12 +72,8 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     setCatToAdd(null);
     setDogToAdd(null);
   }
-
-
   return (
-
     <>
-    
       {!submitted &&
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
@@ -123,7 +107,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <button type="button" onClick={handleClickShowFavourites}>Favorites</button>
             </div>
           </form>
-          
         </>
       }
       {
@@ -135,7 +118,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
           <button className = "nextbutton" onClick={handleClickNext}>next</button>
         </div>
       }
-
     </>
   )
 }

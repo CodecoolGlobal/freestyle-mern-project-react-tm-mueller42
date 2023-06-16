@@ -8,7 +8,6 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [editedComment, setEditedComment] = useState("");
     const [editedVote, setEditedVote] = useState("");
 
-
     useEffect(() => {
         fetch(serverUrl)
             .then((response) => response.json())
@@ -24,7 +23,6 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         backClick(false)
     }
 
-
     async function handleDelete(id) {
         try {
             await fetch(serverUrl + id, { method: 'DELETE' });
@@ -32,16 +30,16 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             setFavourites(updatedFavourites);
         } catch (error) {
             console.error('Error deleting todo:', error);
-          }
-        };
-    
-        function handleEdit(favourite) {
-            const id = favourite._id;
-            setShowEdit(id);
-            if(favourite.comment){setEditedComment(favourite.comment)};
-            if(favourite.title){setEditedTitle(favourite.title)};
-            if(favourite.votes){setEditedVote(favourite.votes)};
         }
+    };
+    
+    function handleEdit(favourite) {
+        const id = favourite._id;
+        setShowEdit(id);
+        if(favourite.comment){setEditedComment(favourite.comment)};
+        if(favourite.title){setEditedTitle(favourite.title)};
+        if(favourite.votes){setEditedVote(favourite.votes)};
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
