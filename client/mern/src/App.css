@@ -53,11 +53,20 @@ body {
   position: fixed;
 }
 
-.nextbutton {
- /* margin-top: 0.5%;
- align-self: flex-end;
- margin-right: 2%; */
+.submitcontainer {
+  position: absolute;
+  left:50%;
+  top:10%;
+  transform: translate(-50%);
+  /* background-color: aqua; */
+  text-align: center;
 }
+
+/* .nextbutton {
+ margin-top: 0.5%;
+ align-self: flex-end;
+ margin-right: 2%;
+} */
 
 .randomanimalform {
   display: flex;
@@ -68,18 +77,25 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 5vw;
-  height: 20vw;
+  height: 50vh;
   width: 100%;
+  /* background-color: aquamarine; */
 }
 
 .randomcatimage {
-  width: 20vw;
-  margin-right: 5vw;
-
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomdogimage {
-  width: 20vw;
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomcatsidebar {
@@ -87,7 +103,7 @@ body {
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
-  
+
 }
 
 .randomdogsidebar {
@@ -100,8 +116,13 @@ body {
 
 .randombuttonscontainer {
   position: absolute;
-  margin-left: 60vw;
+  left: 50%;
+  transform:translate(-50%);
 }
+.randombuttonscontainer>button {
+  display: inline;
+}
+
 
 #catImg {
   max-height: 250px;
@@ -197,7 +218,7 @@ body {
   width: 20%;
   height: 20vW;
   background-color: rgb(170, 240, 30);
-  position: absolute;
+  position: fixed;
   left:0px;
   top:15vw;
   justify-content: center;
