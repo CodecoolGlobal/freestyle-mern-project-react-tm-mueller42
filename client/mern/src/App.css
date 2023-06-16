@@ -48,6 +48,7 @@ body {
   margin-top: 10vw;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 100vw;
   height: 90vw;
   position: fixed;
@@ -62,45 +63,62 @@ body {
 .randomanimalform {
   display: flex;
   width: 100%;
+  
 }
 
 .randomimagescontainer {
   display: flex;
   flex-direction: row;
-  margin-top: 5vw;
+  margin-top: 10vw;
   height: 20vw;
   width: 100%;
+  margin-left: 12vw;
+
 }
 
 .randomcatimage {
   width: 20vw;
   margin-right: 5vw;
-
+  border: 5px solid rgb(209,148,190);
 }
 
 .randomdogimage {
   width: 20vw;
+  border: 5px solid rgb(209,148,190);
 }
 
 .randomcatsidebar {
-  width: 18vw;
+  width: 24vw;
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
-  
+  padding-left: 1vw;
+  padding-top: 1vw;
+  font-size: 1.4vw;
 }
 
 .randomdogsidebar {
-  width: 18vw;
+  width: 24vw;
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
   margin-left: auto;
+  padding-left: 1vw;
+  padding-top: 1vw;
+  font-size: 1.4vw;
 }
 
 .randombuttonscontainer {
   position: absolute;
   margin-left: 60vw;
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-between;
+  width: 21vw;
+}
+
+.randombuttonscontainer > button {
+  background-color: rgb(209,148,190);
 }
 
 #catImg {
@@ -111,6 +129,19 @@ body {
   left: -20%;
   animation: catAnimateImages 500ms linear forwards;
 }
+
+.checkbox {
+  width: 2vw;
+}
+
+input[type='checkbox'] {
+  accent-color: rgb(209,148,190);
+}
+
+input:focus {
+  background-color: rgb(209,148,190);
+}
+
 
 @keyframes catAnimateImages {
   0% {
