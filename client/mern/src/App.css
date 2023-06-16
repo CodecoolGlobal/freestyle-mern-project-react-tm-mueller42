@@ -174,8 +174,8 @@ body {
 }
 #teamName{
   opacity: 0;
-  top: 45%;
-  left:33%;
+  top: 50%;
+  left:38%;
   position: absolute;
   animation: teamAnimateImages 2s 3s linear forwards;
 }
