@@ -69,11 +69,12 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         }
           
     return(
-        <div>
+        <div className="favouriteandeditcontainer">
+        <button id="backFromFav" onClick={handleBackClick}>back</button>
         <div className="favouritescontainer">
             {favourites && favourites.map((favourite, index) => (
                 <div id = "fav" className="favourite" key={favourite._id}>
-                    <img src={favourite.imgUrl}></img>
+                    <img className="favimg" src={favourite.imgUrl}></img>
                     <h3>{favourite.title}</h3>
                     <p>{favourite.comment}</p>
                     <p>{favourite.votes}</p>
@@ -94,7 +95,6 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <button type="submit">Save</button>
                 </form>
             </div>}
-            <button id="backFromFav" onClick={handleBackClick}>back</button>
         </div>
     )
 }
