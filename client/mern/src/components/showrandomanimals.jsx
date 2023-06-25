@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 
-
-
-
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl }) {
 
-
   const [submitted, setSubmitted] = useState(false);
-
   const [catData, setCatData] = useState({});
   const [dogData, setDogData] = useState({});
-
-
-
 
   class Animal {
     constructor(id, title, comment, breed, favorite, votes, createdAt, imgUrl, type) {
@@ -32,8 +24,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     e.preventDefault();
     showFavourites();
   }
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,8 +62,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     }
     if (Object.keys(catData).length > 0 || Object.keys(dogData).length > 0)
       setSubmitted(true);
-
-
   }
 
   const handleClickNext = () => {
@@ -84,23 +72,19 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     setCatToAdd(null);
     setDogToAdd(null);
   }
-
-
   return (
-
     <>
-    
       {!submitted &&
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randomcatsidebar">
-              <label>Add cat to favourites</label>
-              <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
-              <label>Name:
+              <label>Add to favourites  </label>
+              <input className="checkbox" type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
+              <label>Name:<br></br>
                 <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
-              <label>comment:
+              <label>Comment:<br></br>
                 <input type="text" value={catData.comment ? catData.comment : ""} onChange={e => setCatData({ ...catData, comment: e.target.value })}></input></label><br/>
-              <label>vote: </label>
+              <label>Vote: </label><br></br>
               <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
             </div>
             <div className="randomimagescontainer">
@@ -108,22 +92,21 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <img className="randomdogimage" src={dog.url} ></img>
             </div>
             <div className="randomdogsidebar">
-              <label>Add dog to favourites</label>
-              <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
-              <label>Name:
+              <label>Add to favourites  </label>
+              <input className="checkbox" type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
+              <label>Name: <br></br>
                 <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />
-              <label>comment:
+              <label>Comment:<br></br>
                 <input type="text" value={dogData.comment ? dogData.comment : ""} onChange={e => setDogData({ ...dogData, comment: e.target.value })}></input></label><br />
-              <label>vote: </label>
+              <label>Vote: </label><br></br>
               <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
             </div>
             <div className="randombuttonscontainer">
-              <button type="submit">submit</button>
-              <button className="nextbutton" onClick={handleClickNext}>next</button>
-              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+              <button type="submit">Submit</button>
+              <button className="nextbutton" onClick={handleClickNext}>Next</button>
+              <button type="button" onClick={handleClickShowFavourites}>Favorites</button>
             </div>
           </form>
-          
         </>
       }
       {
@@ -135,7 +118,6 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
           <button className = "nextbutton" onClick={handleClickNext}>next</button>
         </div>
       }
-
     </>
   )
 }
