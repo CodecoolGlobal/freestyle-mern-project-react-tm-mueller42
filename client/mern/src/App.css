@@ -32,6 +32,13 @@ body {
   width: 18vw;
 }
 
+#backFromFav {
+  position: fixed;
+  top: 11vw;
+  left:2vw;
+  width: 16vW;
+}
+
 .headertitle {
   width: 18vw;
   margin-right: 2%;
@@ -47,11 +54,20 @@ body {
   position: fixed;
 }
 
-.nextbutton {
- /* margin-top: 0.5%;
- align-self: flex-end;
- margin-right: 2%; */
+.submitcontainer {
+  position: absolute;
+  left:50%;
+  top:10%;
+  transform: translate(-50%);
+  /* background-color: aqua; */
+  text-align: center;
 }
+
+/* .nextbutton {
+ margin-top: 0.5%;
+ align-self: flex-end;
+ margin-right: 2%;
+} */
 
 .randomanimalform {
   display: flex;
@@ -62,22 +78,26 @@ body {
 .randomimagescontainer {
   display: flex;
   flex-direction: row;
-  margin-top: 10vw;
-  height: 20vw;
+  margin-top: 5vw;
+  height: 50vh;
   width: 100%;
-  margin-left: 12vw;
-
+  /* background-color: aquamarine; */
 }
 
 .randomcatimage {
-  width: 20vw;
-  margin-right: 5vw;
-  border: 5px solid rgb(209,148,190);
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomdogimage {
-  width: 20vw;
-  border: 5px solid rgb(209,148,190);
+  width: 35vw;
+  height: 50vh;
+  object-fit:contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .randomcatsidebar {
@@ -85,9 +105,6 @@ body {
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
-  padding-left: 1vw;
-  padding-top: 1vw;
-  font-size: 1.4vw;
 }
 
 .randomdogsidebar {
@@ -103,16 +120,14 @@ body {
 
 .randombuttonscontainer {
   position: absolute;
-  margin-left: 60vw;
-  margin-top: 2vw;
-  display: flex;
-  justify-content: space-between;
-  width: 21vw;
+  left: 50%;
+  transform:translate(-50%);
 }
 
-.randombuttonscontainer > button {
-  background-color: rgb(209,148,190);
+.randombuttonscontainer>button {
+  display: inline;
 }
+
 
 #catImg {
   max-height: 250px;
@@ -175,6 +190,8 @@ input:focus {
 #dogImg {
   max-height: 250px;
   max-width: 250px;
+  max-height: 250px;
+  max-width: 250px;
   animation: dogAnimateImages 500ms 1s linear forwards;
   position: absolute;
   top: 25%;
@@ -194,33 +211,65 @@ input:focus {
     top: 25%;
   }
 }
+#teamName{
+  opacity: 0;
+  top: 45%;
+  left:33%;
+  position: absolute;
+  animation: teamAnimateImages 2s 3s linear forwards;
+}
+@keyframes teamAnimateImages {
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 
-/* .editcontainer{
+.editcontainer{
+  padding-top:10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 20%;
-  background-color: rgb(35, 36, 36);
-  position: absolute;
+  height: 20vW;
+  background-color: rgb(170, 240, 30);
+  position: fixed;
   left:0px;
+  top:15vw;
   justify-content: center;
+}
+
+/* .editcontainer>form>label {
+  display:flex;
 } */
+
+.editcontainer>form>label>input[type=text] {
+  width: 18vw;
+}
+.editcontainer>form>label>input[type=number] {
+  width: 18vw;
+  margin-bottom: 5px;
+}
+.editcontainer>form>label>textarea {
+  width: 18vw;
+}
+
 .favouritescontainer{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  background-color: aqua;
+  background-color: rgb(201, 204, 203);
   position: absolute;
   left:20%;
   justify-content: center;
-  
 }
 
-
 #fav {
-  background-color: chartreuse;
+  background-color: rgb(181, 235, 75);
   margin: 5px;
   /* display: flex;
   flex-direction: row;
