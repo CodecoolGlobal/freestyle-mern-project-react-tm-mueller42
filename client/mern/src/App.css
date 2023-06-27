@@ -83,19 +83,25 @@ body {
 }
 
 .randomcatimage {
-  width: 35vw;
+  width: 32vw;
   height: 50vh;
+  padding: 5px;
   object-fit:contain;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(175, 225, 200);
+  border: 3px solid brown;
 }
 
 .randomdogimage {
-  width: 35vw;
+  width: 32vw;
   height: 50vh;
+  padding: 5px;
   object-fit:contain;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(175, 225, 200);
+  border: 3px solid brown;
 }
 
 .randomcatsidebar {
