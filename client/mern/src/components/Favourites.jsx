@@ -6,7 +6,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [showEdit, setShowEdit] = useState(null);
     const [editedTitle, setEditedTitle] = useState("");
     const [editedComment, setEditedComment] = useState("");
-    const [editedVote, setEditedVote] = useState("");
+    const [editedRating, setEditedRating] = useState("");
 
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             setShowEdit(id);
             if(favourite.comment){setEditedComment(favourite.comment)};
             if(favourite.title){setEditedTitle(favourite.title)};
-            if(favourite.votes){setEditedVote(favourite.votes)};
+            if(favourite.rating){setEditedRating(favourite.rating)};
         }
 
     function handleSubmit(e) {
@@ -49,7 +49,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             if (favourite._id === showEdit) {
                 favourite.title = editedTitle;
                 favourite.comment = editedComment;
-                favourite.vote = editedVote;
+                favourite.rating = editedRating;
 
                 fetch(serverUrl, {
                     method: "POST",
@@ -76,7 +76,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <img src={favourite.imgUrl}></img>
                     <h3>{favourite.title}</h3>
                     <p>{favourite.comment}</p>
-                    <p>{favourite.votes}</p>
+                    <p>{favourite.rating}</p>
                     <button className="deletefavourite" onClick={()=> handleDelete(favourite._id)}>delete</button>
                     <button className="editfavourite" onClick={() => handleEdit(favourite)}>edit</button>
                 </div>
@@ -90,7 +90,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                     <label>Comment:
                     <br></br><textarea rows="2" cols="20" value={editedComment?editedComment:""} onChange={e=>setEditedComment(e.target.value)}></textarea></label><br/>
                     <label>Rating:
-                    <br></br><input type="number" value={editedVote?editedVote:""} onChange={e=>setEditedVote(e.target.value)}/></label><br/>
+                    <br></br><input type="number" value={editedRating?editedRating:""} onChange={e=>setEditedRating(e.target.value)}/></label><br/>
                     <button type="submit">Save</button>
                 </form>
             </div>}

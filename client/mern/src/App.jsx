@@ -13,6 +13,7 @@ function App() {
   const catUrl = `https://api.thecatapi.com/v1/images/search?api_key=${catKey}&has_breeds=1`
   const dogUrl = `https://api.thedogapi.com/v1/images/search?api_key=${dogKey}&has_breeds=1`
   const serverUrl = "http://localhost:4000/animal/";
+  const votesUrl = "http://localhost:4000/votes/";
 
   const [catImage, setCatImage] = useState(null);
   const [dogImage, setDogImage] = useState(null);
@@ -81,6 +82,7 @@ function App() {
             showFavourites={handleshowFavourites}
             loadNext={handleLoadNext}
             serverUrl={serverUrl}
+            votesUrl = {votesUrl}
           />
         </div>
       }

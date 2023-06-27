@@ -129,7 +129,7 @@ body {
   border: 3px solid brown;
 }
 
-.randomdogimagecontainer:hover .voteCat {
+.randomdogimagecontainer:hover .voteDog {
   border-color: #e9ddd8;
   background-color: #037240;
   color: rgb(239, 246, 250);

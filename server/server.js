@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 let Animal = require('./models/animal.js');
+let Vote = require('./models/votes.js');
 const cors = require("cors");
 const fs = require("fs");
 const { error } = require('console');
@@ -35,19 +36,30 @@ app.get("/catnames", (req, res) => {
     const data = readDataFile("./names.json");
     res.send(data.cats);
 })
+// app.get('/animal', (req, res) => {
+//     Animal.find({})
+//     .then(data => res.json(data))
+//     .catch(error => res.json(error))
+
+// })
+
+// app.get("/animal", (req,res) => {
+//     Animal.find({})
+//     .then(data => res.json(data))
+//     .catch(error => res.json(error))
+// });
+
 app.get('/animal', (req, res) => {
-    Animal.find({})
-    .then(data => res.json(data))
-    .catch(error => res.json(error))
-
-})
-
-app.get("/animal", (req,res) => {
-    Animal.find({})
-    .then(data => res.json(data))
-    .catch(error => res.json(error))
-});
-
+    Animal.find()
+        .then(animal => {
+        // console.log("animal", animal)
+        res.json(animal);
+        })
+        .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+        });
+    });
 
 app.post ("/animal", (req,res) => {
     const id = req.body.id;
@@ -55,7 +67,7 @@ app.post ("/animal", (req,res) => {
     const comment = req.body.comment;
     const breed = req.body.breed;
     const favourite = req.body.favourite;
-    const votes = req.body.votes;
+    const rating = req.body.rating;
     const createdAt = Date.now();
     const imgUrl = req.body.imgUrl;
     const type = req.body.type;
@@ -65,17 +77,7 @@ app.post ("/animal", (req,res) => {
     .then(data => {
         if (data.length===0){
             console.log("save");
-            const animal = new Animal({
-                id,
-                title,
-                comment,
-                breed,
-                favourite,
-                votes,
-                createdAt,
-                imgUrl,
-                type
-              });
+            const animal = new Animal(req.body);
               animal.save()
                 .then(() => res.json(`${type} saved to Database`))
                 .catch(err => res.status(400).json({ success: false }));
@@ -83,7 +85,7 @@ app.post ("/animal", (req,res) => {
             const animal = data[0];          
             animal.title = title;
             animal.comment = comment;
-            animal.votes = votes;
+            animal.rating = rating;
             animal.save()
             .then(() => res.send(JSON.stringify("Animal updated")))
             .catch(error => {
@@ -93,18 +95,6 @@ app.post ("/animal", (req,res) => {
     })
 
 })
-
-app.get('/animal', (req, res) => {
-    Animal.find()
-        .then(animal => {
-        console.log("animal", animal)
-        res.json(animal);
-        })
-        .catch(error => {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-        });
-    });
 
 app.delete('/animal/:id', (req, res) => {
     const id = req.params.id;
@@ -118,6 +108,27 @@ app.delete('/animal/:id', (req, res) => {
         console.error('Error deleting todo:', error);
         res.status(500).send('Internal Server Error');
     });
+})
+
+app.get('/votes', (req, res) => {
+    Vote.find({name:"votes"})
+    .then(votes => res.json(votes))
+    .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+        });
+})
+
+app.post('/votes', (req, res) => {
+    Vote.find({name:"votes"})
+    .then(data => {
+        if (data.length===0){
+            const votes = new Vote(req.body);
+            votes.save()
+              .then(() => res.json(`votes saved to Database`))
+              .catch(err => res.status(400).json({ success: false }));
+        }
+    })
 })
 
 app.listen(4000, () => console.log('Server started on port 4000'));
