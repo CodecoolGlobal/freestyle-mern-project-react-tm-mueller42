@@ -93,9 +93,14 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
       {!submitted &&
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
+            <div className="randombuttonscontainer">
+              <button type="submit">submit</button>
+              <button className="nextbutton" onClick={handleClickNext}>next</button>
+              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+            </div>
             <div className="randomcatsidebar">
-              <label>Add cat to favourites</label>
-              <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> <br />
+              <label>Add cat to favourites
+              <input type="checkbox" checked={catData.addtofav ? catData.addtofav : false} onChange={e => setCatData({ ...catData, addtofav: e.target.checked })}></input> </label>
               <label>Name:
                 <input type="text" value={catData.name ? catData.name : ""} onChange={e => setCatData({ ...catData, name: e.target.value })}></input></label><br />
               <label>comment:
@@ -104,23 +109,24 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <input type="number" value={catData.vote ? catData.vote : ""} placeholder='from 1-10' onChange={e => setCatData({ ...catData, vote: e.target.value })}></input><br />
             </div>
             <div className="randomimagescontainer">
-              <img className="randomcatimage" src={cat.url} ></img>
-              <img className="randomdogimage" src={dog.url} ></img>
+              <div className="randomcatimagecontainer">
+                <img className="randomcatimage" src={cat.url} ></img>
+                <button className="voteCat" type="button">The cat is cute. Vote for the cat!</button>
+              </div>
+              <div className="randomdogimagecontainer">
+                <img className="randomdogimage" src={dog.url} ></img>
+                <button className="voteDog" type="button">The dog is cool. Vote for the dog!</button>
+              </div>
             </div>
             <div className="randomdogsidebar">
-              <label>Add dog to favourites</label>
-              <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input> <br />
+              <label>Add dog to favourites
+              <input type="checkbox" checked={dogData.addtofav ? dogData.addtofav : false} onChange={e => setDogData({ ...dogData, addtofav: e.target.checked })}></input></label>
               <label>Name:
                 <input type="text" value={dogData.name ? dogData.name : ""} onChange={e => setDogData({ ...dogData, name: e.target.value })}></input></label><br />
               <label>comment:
                 <input type="text" value={dogData.comment ? dogData.comment : ""} onChange={e => setDogData({ ...dogData, comment: e.target.value })}></input></label><br />
               <label>vote: </label>
               <input type="number" value={dogData.vote ? dogData.vote : ""} placeholder='from 1-10' onChange={e => setDogData({ ...dogData, vote: e.target.value })}></input><br />
-            </div>
-            <div className="randombuttonscontainer">
-              <button type="submit">submit</button>
-              <button className="nextbutton" onClick={handleClickNext}>next</button>
-              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
             </div>
           </form>
           
