@@ -8,6 +8,7 @@ export default function CatName() {
         fetch(`http://localhost:4000/catnames`)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 setCatnames(data);
 
             })

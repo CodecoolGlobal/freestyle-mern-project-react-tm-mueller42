@@ -34,6 +34,7 @@ app.get("/dognames", (req, res) => {
 app.get("/catnames", (req, res) => {
     const data = readDataFile("./names.json");
     res.send(data.cats);
+  
 })
 app.get('/animal', (req, res) => {
     Animal.find({})
@@ -42,11 +43,6 @@ app.get('/animal', (req, res) => {
 
 })
 
-app.get("/animal", (req,res) => {
-    Animal.find({})
-    .then(data => res.json(data))
-    .catch(error => res.json(error))
-});
 
 
 app.post ("/animal", (req,res) => {

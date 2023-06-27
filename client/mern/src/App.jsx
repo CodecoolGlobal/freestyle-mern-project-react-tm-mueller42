@@ -61,7 +61,7 @@ function App() {
           <img id="catImg" src="../src/images/cat.png"></img>
           <img id="vsImg" src="../src/images/vs.png"></img>
           <img id="dogImg" src="../src/images/dog.png"></img>
-          {/* <img id="teamName" src="../src/images/OnClick-Magic.png"></img> */}
+          <img id="teamName" src="../src/images/onClick-Magic.png"></img> 
         </div>
       }
 
