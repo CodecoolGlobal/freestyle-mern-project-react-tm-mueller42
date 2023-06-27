@@ -76,7 +76,6 @@ app.post ("/animal", (req,res) => {
     Animal.find({id:id})
     .then(data => {
         if (data.length===0){
-            console.log("save");
             const animal = new Animal(req.body);
               animal.save()
                 .then(() => res.json(`${type} saved to Database`))
@@ -101,11 +100,11 @@ app.delete('/animal/:id', (req, res) => {
 
     Animal.findByIdAndDelete(id)
     .then(() => {
-        console.log('Todo deleted:', id);
+        console.log('Animal deleted:', id);
         res.sendStatus(204);
     })
     .catch(error => {
-        console.error('Error deleting todo:', error);
+        console.error('Error deleting Animal:', error);
         res.status(500).send('Internal Server Error');
     });
 })
@@ -114,7 +113,7 @@ app.get('/votes', (req, res) => {
     Vote.find({name:"votes"})
     .then(votes => res.json(votes))
     .catch(error => {
-        console.error(error);
+        console.error('Error fetching Votes:', error);
         res.status(500).send('Internal Server Error');
         });
 })
@@ -127,7 +126,16 @@ app.post('/votes', (req, res) => {
             votes.save()
               .then(() => res.json(`votes saved to Database`))
               .catch(err => res.status(400).json({ success: false }));
-        }
+        } else {
+            const votes = data[0];
+            const newVote = req.body;
+            for(entry in votes) {
+                if (newVote[entry]) {votes[entry] = votes[entry] + (newVote[entry])};
+            }
+            votes.save()
+            .then(() => res.json(`votes saved to Database`))
+            .catch(err => res.status(400).json({ success: false }));
+        } 
     })
 })
 

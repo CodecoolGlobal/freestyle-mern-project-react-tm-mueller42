@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl, votesUrl }) {
 
   const [submitted, setSubmitted] = useState(false);
   const [catData, setCatData] = useState({});
   const [dogData, setDogData] = useState({});
+  const [catVotes, setCatVotes] = useState(0);
+  const [dogVotes, setDogVotes] = useState(0);
 
   class Animal {
     constructor(id, title, comment, breed, favorite, rating, createdAt, imgUrl, type) {
@@ -71,10 +73,20 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     setDogData({});
   }
 
+  const updateVotes = () => {
+    fetch(votesUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log("fetched: ", data);
+      setCatVotes(data[0].catVotes);
+      setDogVotes(data[0].dogVotes);
+    })
+  }
+
   const handleClickCatVote = () => {
     const newVotes = {
-      catvotes: 1,
-      dogvotes: 0,
+      catVotes: 1,
+      dogVotes: 0,
       catRating: 0,
       dogRating: 0,
       numberOfCats: 0,
@@ -85,17 +97,46 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
       body: JSON.stringify(newVotes),
       headers: { 'Content-Type': 'application/json; charset=UTF-8' }
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      updateVotes();
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   const handleClickDogVote = () => {
-    
+    const newVotes = {
+      catVotes: 0,
+      dogVotes: 1,
+      catRating: 0,
+      dogRating: 0,
+      numberOfCats: 0,
+      numberOfDogs: 0,
+    }
+    fetch(votesUrl, {
+      method: "POST",
+      body: JSON.stringify(newVotes),
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      updateVotes();
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+  useEffect (() => {
+    updateVotes();
+  }, []);
+
+  const handleClickShowVotes = () => {
+
   }
 
   return (
@@ -107,6 +148,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <button type="submit">submit</button>
               <button className="nextbutton" onClick={handleClickNext}>next</button>
               <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+              <button type="button" className="showVotes" onClick={handleClickShowVotes}>Show Voting Status</button>
             </div>
             <div className="randomcatsidebar">
               <label>Add cat to favourites
@@ -122,10 +164,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <div className="randomcatimagecontainer">
                 <img className="randomcatimage" src={cat.url} ></img>
                 <button className="voteCat" type="button" onClick={handleClickCatVote}>The cat is cute. Vote for the cat!</button>
+                <div>Cat Votes: {catVotes}</div>
               </div>
               <div className="randomdogimagecontainer">
                 <img className="randomdogimage" src={dog.url} ></img>
                 <button className="voteDog" type="button" onClick={handleClickDogVote}>The dog is cool. Vote for the dog!</button>
+                <div>Dog Votes: {dogVotes}</div>
               </div>
             </div>
             <div className="randomdogsidebar">

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const voteSchema = new Schema({
-  catvotes: Number,
-  dogvotes: Number,
+  catVotes: Number,
+  dogVotes: Number,
   catRating: Number,
   dogRating: Number,
   numberOfCats: Number,
