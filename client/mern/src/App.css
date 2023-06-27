@@ -83,7 +83,7 @@ body {
 }
 
 .randomcatimage {
-  width: 32vw;
+  width: 30vw;
   height: 50vh;
   padding: 5px;
   object-fit:contain;
@@ -94,7 +94,7 @@ body {
 }
 
 .randomdogimage {
-  width: 32vw;
+  width: 30vw;
   height: 50vh;
   padding: 5px;
   object-fit:contain;
@@ -123,6 +123,7 @@ body {
 .randombuttonscontainer {
   position: absolute;
   left: 50%;
+  top: 1%;
   transform:translate(-50%);
 }
 .randombuttonscontainer>button {
