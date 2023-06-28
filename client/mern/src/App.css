@@ -288,3 +288,15 @@ body {
 #fav>img {
   width: 90%;
 }
+.filterBox{
+  width: 100%;
+  background-color: rgb(7, 150, 102);
+}
+.reset{
+  color:red;
+  margin-left: 5%;
+  border: 2px solid rgb(160, 4, 4);
+}
+.label{
+  margin-left: 5%;
+}

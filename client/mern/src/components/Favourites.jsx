@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 export default function ShowFavourites({ backClick, serverUrl }) {
 
@@ -7,7 +7,11 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [editedTitle, setEditedTitle] = useState("");
     const [editedComment, setEditedComment] = useState("");
     const [editedVote, setEditedVote] = useState("");
-    const [filteredFavorites,setFilteredFavorites]=useState(null)
+
+    const [filteredFavorites, setFilteredFavorites] = useState(null);
+    const votes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const [filteredByType, setFilteredByType] = useState(false);
+    const [filteredByVote, setFilteredByVote] = useState("No-vote");
 
     useEffect(() => {
         fetch(serverUrl)
@@ -15,6 +19,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             .then((data) => {
                 setFavourites(data);
                 setFilteredFavorites(data)
+
             })
             .catch((error) => {
                 console.error(error);
@@ -28,7 +33,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     async function handleDelete(id) {
         try {
             await fetch(serverUrl + id, { method: 'DELETE' });
-            const updatedFavourites = favourites.filter(favourite => favourite._id !== id);
+            const updatedFavourites = filteredFavorites.filter(favourite => favourite._id !== id);
             setFavourites(updatedFavourites);
         } catch (error) {
             console.error('Error deleting todo:', error);
@@ -45,7 +50,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        favourites.map(favourite => {
+        filteredFavorites.map(favourite => {
             if (favourite._id === showEdit) {
                 favourite.title = editedTitle;
                 favourite.comment = editedComment;
@@ -68,21 +73,41 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         setShowEdit(null)
     }
 
-    const filteredFav = (e) => {
-     setFilteredFavorites (favourites.filter(fav => fav.type === e))
+    const resetFilter = () => {
+        setFilteredFavorites(favourites);
+        setFilteredByType(false);
+        setFilteredByVote("No-vote");
     }
+    
+    useEffect(() => {
+      
+        if (filteredByType && filteredByVote !== "No-vote") {
+            setFilteredFavorites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
+        } else if (filteredByType) {
+            setFilteredFavorites(favourites.filter(fav => (fav.type === filteredByType)));
+        } else if (filteredByVote !== "No-vote") {
+            setFilteredFavorites(favourites.filter(fav => (fav.votes === filteredByVote)));
+        }
+    }, [filteredByType, filteredByVote, favourites])
 
     return (
         <div className="favouriteandeditcontainer">
             <button id="backFromFav" onClick={handleBackClick}>back</button>
-            <div>
-                <label>sort by Cat:</label>
-                <input type="radio" name="filter" onClick={(e) => filteredFav("cat")}></input>
+            <div className="filterBox">
+                <label className="label">filter by Cat:</label>
+                <input  checked={filteredByType === "cat"} type="radio" name="filter" onClick={(e) => setFilteredByType("cat")}></input>
 
-                <label>sort by Dog:</label>
-                <input type="radio" name="filter" onClick={(e) => filteredFav("dog")}></input>
+                <label className="label"> filter by Dog:</label>
+                <input  checked={filteredByType === "dog"} type="radio" name="filter" onClick={(e) => setFilteredByType("dog")}></input>
 
-                <input type="button" value="reset"></input>
+                <label className="label"> choose vote:</label>
+                <select value={filteredByVote} onChange={(e) => setFilteredByVote(e.target.value === "No-vote" ? e.target.value : parseInt(e.target.value))}>
+                    <option value="No-vote">No-vote</option>
+                    {votes.map(vote =>
+                        <option value={vote}>{vote}</option>
+                    )}
+                </select>
+                <input className="reset" type="button" value="reset all filters" onClick={resetFilter}></input>
             </div>
 
             <div className="favouritescontainer">
