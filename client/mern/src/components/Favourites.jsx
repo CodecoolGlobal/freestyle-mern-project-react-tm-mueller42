@@ -30,6 +30,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         backClick(false)
     }
 
+
     async function handleDelete(id) {
         try {
             await fetch(serverUrl + id, { method: 'DELETE' });
@@ -54,7 +55,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             if (favourite._id === showEdit) {
                 favourite.title = editedTitle;
                 favourite.comment = editedComment;
-                favourite.vote = editedVote;
+                favourite.rating = editedRating;
 
                 fetch(serverUrl, {
                     method: "POST",

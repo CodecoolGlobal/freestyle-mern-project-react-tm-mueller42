@@ -13,6 +13,7 @@ export default function DogName() {
           })
       }, [])
 
+
     return (
         <div className="dogname">Name</div>
     )

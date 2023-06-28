@@ -7,7 +7,7 @@ const animalSchema = new Schema({
   comment: String,
   breed: String,
   favourite:Boolean,
-  votes:Number,
+  rating:Number,
   createdAt: Date,
   imgUrl:String,
   type:String
