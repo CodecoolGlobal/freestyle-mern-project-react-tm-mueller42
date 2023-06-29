@@ -48,7 +48,6 @@ body {
   margin-top: 10vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100vw;
   height: 90vw;
   position: fixed;
@@ -63,16 +62,20 @@ body {
   text-align: center;
 }
 
-/* .nextbutton {
- margin-top: 0.5%;
- align-self: flex-end;
- margin-right: 2%;
-} */
-
 .randomanimalform {
   display: flex;
   width: 100%;
-  
+}
+
+.randombuttonscontainer {
+  position: absolute;
+  left: 50%;
+  top: 1vw;
+  transform:translate(-50%);
+}
+
+.randombuttonscontainer>button {
+  display: inline;
 }
 
 .randomimagescontainer {
@@ -81,53 +84,87 @@ body {
   margin-top: 5vw;
   height: 50vh;
   width: 100%;
-  /* background-color: aquamarine; */
+  /* justify-content: center; */
+  /* background-color: rgb(255, 0, 170); */
+}
+
+.randomcatimagecontainer {
+  width: 31vw;
+  height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .randomcatimage {
-  width: 35vw;
+  box-sizing: border-box;
+  width: 31vw;
   height: 50vh;
+  padding: 5px;
   object-fit:contain;
+  background-color: rgb(175, 225, 200);
+  border: 3px solid brown;
+}
+
+.randomcatimagecontainer:hover .voteCat {
+  border-color: #e9ddd8;
+  background-color: #037240;
+  color: rgb(239, 246, 250);
+}
+
+.randomdogimagecontainer {
+  width: 31vw;
+  height: 50vh;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .randomdogimage {
-  width: 35vw;
+  box-sizing: border-box;
+  width: 31vw;
   height: 50vh;
+  padding: 5px;
   object-fit:contain;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: rgb(175, 225, 200);
+  border: 3px solid brown;
+}
+
+.randomdogimagecontainer:hover .voteDog {
+  border-color: #e9ddd8;
+  background-color: #037240;
+  color: rgb(239, 246, 250);
 }
 
 .randomcatsidebar {
-  width: 24vw;
+  display: flex;
+  flex-direction:column;
+  padding: 5px;
+  width: 18vw;
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
+
+}
+
+.voteCat {
+  margin-top:10px;
+}
+
+.voteDog {
+  margin-top:10px;
 }
 
 .randomdogsidebar {
-  width: 24vw;
+  display: flex;
+  flex-direction:column;
+  padding: 5px;
+  width: 18vw;
   height: 60vw;
   background-color: rgb(64, 64, 64);
   color: white;
   margin-left: auto;
-  padding-left: 1vw;
-  padding-top: 1vw;
-  font-size: 1.4vw;
 }
-
-.randombuttonscontainer {
-  position: absolute;
-  left: 50%;
-  transform:translate(-50%);
-}
-
-.randombuttonscontainer>button {
-  display: inline;
-}
-
 
 #catImg {
   max-height: 250px;
@@ -137,19 +174,6 @@ body {
   left: -20%;
   animation: catAnimateImages 500ms linear forwards;
 }
-
-.checkbox {
-  width: 2vw;
-}
-
-input[type='checkbox'] {
-  accent-color: rgb(209,148,190);
-}
-
-input:focus {
-  background-color: rgb(209,148,190);
-}
-
 
 @keyframes catAnimateImages {
   0% {
@@ -264,8 +288,13 @@ input:focus {
   width: 80%;
   background-color: rgb(201, 204, 203);
   position: absolute;
+  /* margin-left: 20%;
+  margin-top: 15%; */
   left:20%;
+  top: 11vw;
+  height: 75%;
   justify-content: center;
+  overflow: auto  ;
 }
 
 #fav {
@@ -287,4 +316,18 @@ input:focus {
 }
 #fav>img {
   width: 90%;
+}
+
+.filterBox{
+  position: fixed;
+  width: 100%;
+  background-color: rgb(7, 150, 102);
+}
+.reset{
+  color:red;
+  margin-left: 5%;
+  border: 2px solid rgb(160, 4, 4);
+}
+.label{
+  margin-left: 5%;
 }
