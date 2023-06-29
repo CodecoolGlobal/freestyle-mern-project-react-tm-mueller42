@@ -32,6 +32,12 @@ body {
   width: 18vw;
 }
 
+#backFromFav {
+  position: fixed;
+  top: 11vw;
+  left:2vw;
+  width: 16vW;
+}
 
 .headertitle {
   width: 18vw;
@@ -90,9 +96,27 @@ body {
 }
 
 .randomcatimage {
-  width: 20vw;
-  margin-right: 5vw;
-  border: 5px solid rgb(209,148,190);
+  box-sizing: border-box;
+  width: 31vw;
+  height: 50vh;
+  padding: 5px;
+  object-fit:contain;
+  background-color: rgb(175, 225, 200);
+  border: 3px solid brown;
+}
+
+.randomcatimagecontainer:hover .voteCat {
+  border-color: #e9ddd8;
+  background-color: #037240;
+  color: rgb(239, 246, 250);
+}
+
+.randomdogimagecontainer {
+  width: 31vw;
+  height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .randomdogimage {
@@ -212,10 +236,8 @@ body {
 }
 #teamName{
   opacity: 0;
-
   top: 45%;
   left:33%;
-
   position: absolute;
   animation: teamAnimateImages 2s 3s linear forwards;
 }
@@ -265,8 +287,13 @@ body {
   width: 80%;
   background-color: rgb(201, 204, 203);
   position: absolute;
+  /* margin-left: 20%;
+  margin-top: 15%; */
   left:20%;
+  top: 11vw;
+  height: 75%;
   justify-content: center;
+  overflow: auto  ;
 }
 
 #fav {
@@ -291,6 +318,7 @@ body {
 }
 
 .filterBox{
+  position: fixed;
   width: 100%;
   background-color: rgb(7, 150, 102);
 }

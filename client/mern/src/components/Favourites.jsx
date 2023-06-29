@@ -79,9 +79,9 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         setFilteredByType(false);
         setFilteredByVote("No-vote");
     }
-    
+
     useEffect(() => {
-      
+
         if (filteredByType && filteredByVote !== "No-vote") {
             setFilteredFavorites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
         } else if (filteredByType) {
@@ -93,15 +93,15 @@ export default function ShowFavourites({ backClick, serverUrl }) {
 
     return (
         <div className="favouriteandeditcontainer">
-            <button id="backFromFav" onClick={handleBackClick}>back</button>
+            
             <div className="filterBox">
                 <label className="label">filter by Cat:</label>
-                <input  checked={filteredByType === "cat"} type="radio" name="filter" onClick={(e) => setFilteredByType("cat")}></input>
+                <input checked={filteredByType === "cat"} type="radio" name="filter" onClick={(e) => setFilteredByType("cat")}></input>
 
                 <label className="label"> filter by Dog:</label>
-                <input  checked={filteredByType === "dog"} type="radio" name="filter" onClick={(e) => setFilteredByType("dog")}></input>
+                <input checked={filteredByType === "dog"} type="radio" name="filter" onClick={(e) => setFilteredByType("dog")}></input>
 
-                <label className="label"> choose vote:</label>
+                <label className="label"> choose rating:</label>
                 <select value={filteredByVote} onChange={(e) => setFilteredByVote(e.target.value === "No-vote" ? e.target.value : parseInt(e.target.value))}>
                     <option value="No-vote">No-vote</option>
                     {votes.map(vote =>
@@ -110,6 +110,8 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                 </select>
                 <input className="reset" type="button" value="reset all filters" onClick={resetFilter}></input>
             </div>
+            
+            <button id="backFromFav" onClick={handleBackClick}>back</button>
 
             <div className="favouritescontainer">
                 {filteredFavorites && filteredFavorites.map((favourite, index) => (
