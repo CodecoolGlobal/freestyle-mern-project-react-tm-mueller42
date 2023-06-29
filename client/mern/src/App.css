@@ -74,11 +74,11 @@ body {
   transform:translate(-50%);
 }
 
-.randombuttonscontainer>button {
+.randombuttonscontainer>div {
   display: inline;
 }
 
-.randombuttonscontainer:hover button {
+.randombuttonscontainer>div:hover button {
   background-color: rgb(209,148,190);
   border-color: #e9ddd8;
 }
