@@ -39,6 +39,10 @@ body {
   width: 16vW;
 }
 
+#backFromFav:hover {
+  background-color: rgb(175, 225, 200);
+}
+
 .headertitle {
   width: 18vw;
   margin-right: 2%;
@@ -299,7 +303,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
-  background-color: rgb(201, 204, 203);
   position: absolute;
   /* margin-left: 20%;
   margin-top: 15%; */
@@ -310,7 +313,7 @@ body {
   overflow: auto  ;
 }
 
-#fav {
+.fav {
   background-color: rgb(181, 235, 75);
   margin: 5px;
   /* display: flex;
@@ -327,7 +330,7 @@ body {
   height: 500px; */
   /* width: 30%; */
 }
-#fav>img {
+.fav>img {
   width: 90%;
 }
 

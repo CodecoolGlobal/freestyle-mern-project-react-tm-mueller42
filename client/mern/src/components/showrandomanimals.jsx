@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useSound from 'use-sound';
-import meow from "../../public/sounds/meow.wav";
-import bark from "../../public/sounds/bark.mp3";
+import meow from "../sounds/meow.wav";
+import bark from "../sounds/bark.mp3";
 
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl, votesUrl }) {
 
@@ -160,10 +160,10 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
               <div className="randombutton1">
                 <button className="nextbutton" onClick={handleClickNext}>next</button>
               </div>
-              <div className="randombutton1">
+              <div className="randombutton2">
                 <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
               </div>
-              <div className="randombutton1">
+              <div className="randombutton3">
                 <button type="button" className="showVotes" onClick={handleClickShowVotes}>Show Voting Status</button>
               </div>
             </div>
