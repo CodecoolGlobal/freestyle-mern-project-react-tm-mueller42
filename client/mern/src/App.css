@@ -78,6 +78,14 @@ body {
   display: inline;
 }
 
+.backfromsubmitted:hover {
+  background-color: rgb(175, 225, 200);
+}
+
+.next:hover {
+  background-color: rgb(175, 225, 200);
+}
+
 .randombuttonscontainer>div:hover button {
   background-color: rgb(209,148,190);
   border-color: #e9ddd8;
