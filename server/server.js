@@ -96,18 +96,22 @@ app.post ("/animal", (req,res) => {
 
 })
 
-app.delete('/animal/:id', (req, res) => {
+app.delete('/animal/:id', async (req, res) => {
     const id = req.params.id;
 
-    Animal.findByIdAndDelete(id)
-    .then(() => {
+    try {
+        await Animal.findByIdAndDelete(id);
         console.log('Animal deleted:', id);
-        res.sendStatus(204);
-    })
-    .catch(error => {
+
+        const animals = await Animal.find();
+        res.send(animals);
+    } catch (error) {
         console.error('Error deleting Animal:', error);
         res.status(500).send('Internal Server Error');
-    });
+    }
+
+   
+
 })
 
 app.get('/votes', (req, res) => {
