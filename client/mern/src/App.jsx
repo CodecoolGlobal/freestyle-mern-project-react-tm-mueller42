@@ -39,11 +39,6 @@ function App() {
     fetchAnimals(catUrl, dogUrl);
   }, [])
 
-  const handleClickShowFavourites = (e) => {
-    e.preventDefault();
-    setShowFavourites(true);
-  }
-
   const handleshowFavourites = () => {
     setShowFavourites(true);
   }

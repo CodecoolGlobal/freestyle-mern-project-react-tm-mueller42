@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import useSound from 'use-sound';
+import meow from "../../public/sounds/meow.wav";
+import bark from "../../public/sounds/bark.mp3";
 
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl, votesUrl }) {
 
@@ -7,6 +10,8 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   const [dogData, setDogData] = useState({});
   const [catVotes, setCatVotes] = useState(0);
   const [dogVotes, setDogVotes] = useState(0);
+  const [playMeow] = useSound(meow);
+  const [playBark] = useSound(bark);
 
   class Animal {
     constructor(id, title, comment, breed, favorite, rating, createdAt, imgUrl, type) {
@@ -21,11 +26,13 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
       this.type = type
     }
   }
-
+  
   const handleClickShowFavourites = (e) => {
     e.preventDefault();
     showFavourites();
   }
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,6 +91,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   }
 
   const handleClickCatVote = () => {
+    playMeow();
     const newVotes = {
       catVotes: 1,
       dogVotes: 0,
@@ -108,6 +116,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   }
 
   const handleClickDogVote = () => {
+    playBark();
     const newVotes = {
       catVotes: 0,
       dogVotes: 1,
