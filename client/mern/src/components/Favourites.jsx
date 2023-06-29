@@ -8,7 +8,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [editedComment, setEditedComment] = useState("");
     const [editedVote, setEditedVote] = useState("");
 
-    const [filteredFavorites, setFilteredFavorites] = useState(null);
+    const [filteredFavourites, setFilteredFavourites] = useState(null);
     const votes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const [filteredByType, setFilteredByType] = useState(false);
     const [filteredByVote, setFilteredByVote] = useState("No-vote");
@@ -18,7 +18,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             .then((response) => response.json())
             .then((data) => {
                 setFavourites(data);
-                setFilteredFavorites(data)
+                setFilteredFavourites(data)
 
             })
             .catch((error) => {
@@ -34,7 +34,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     async function handleDelete(id) {
         try {
             await fetch(serverUrl + id, { method: 'DELETE' });
-            const updatedFavourites = filteredFavorites.filter(favourite => favourite._id !== id);
+            const updatedFavourites = filteredFavourites.filter(favourite => favourite._id !== id);
             setFavourites(updatedFavourites);
         } catch (error) {
             console.error('Error deleting todo:', error);
@@ -51,7 +51,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        filteredFavorites.map(favourite => {
+        filteredFavourites.map(favourite => {
             if (favourite._id === showEdit) {
                 favourite.title = editedTitle;
                 favourite.comment = editedComment;
@@ -75,7 +75,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     }
 
     const resetFilter = () => {
-        setFilteredFavorites(favourites);
+        setFilteredFavourites(favourites);
         setFilteredByType(false);
         setFilteredByVote("No-vote");
     }
@@ -83,11 +83,11 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     useEffect(() => {
 
         if (filteredByType && filteredByVote !== "No-vote") {
-            setFilteredFavorites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
+            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
         } else if (filteredByType) {
-            setFilteredFavorites(favourites.filter(fav => (fav.type === filteredByType)));
+            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType)));
         } else if (filteredByVote !== "No-vote") {
-            setFilteredFavorites(favourites.filter(fav => (fav.votes === filteredByVote)));
+            setFilteredFavourites(favourites.filter(fav => (fav.votes === filteredByVote)));
         }
     }, [filteredByType, filteredByVote, favourites])
 
@@ -114,7 +114,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
             <button id="backFromFav" onClick={handleBackClick}>back</button>
 
             <div className="favouritescontainer">
-                {filteredFavorites && filteredFavorites.map((favourite, index) => (
+                {filteredFavourites && filteredFavourites.map((favourite, index) => (
                     <div id="fav" className="favourite" key={favourite._id}>
                         <img className="favimg" src={favourite.imgUrl}></img>
                         <h3>{favourite.title}</h3>

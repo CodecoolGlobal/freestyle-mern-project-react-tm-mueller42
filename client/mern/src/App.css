@@ -78,6 +78,11 @@ body {
   display: inline;
 }
 
+.randombuttonscontainer:hover button {
+  background-color: rgb(209,148,190);
+  border-color: #e9ddd8;
+}
+
 .randomimagescontainer {
   display: flex;
   flex-direction: row;
@@ -108,7 +113,7 @@ body {
 
 .randomcatimagecontainer:hover .voteCat {
   border-color: #e9ddd8;
-  background-color: #037240;
+  background-color:rgb(209,148,190);
   color: rgb(239, 246, 250);
 }
 
@@ -132,7 +137,7 @@ body {
 
 .randomdogimagecontainer:hover .voteDog {
   border-color: #e9ddd8;
-  background-color: #037240;
+  background-color: rgb(209,148,190);
   color: rgb(239, 246, 250);
 }
 
