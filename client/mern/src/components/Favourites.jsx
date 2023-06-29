@@ -34,9 +34,11 @@ export default function ShowFavourites({ backClick, serverUrl }) {
 
     async function handleDelete(id) {
         try {
-            await fetch(serverUrl + id, { method: 'DELETE' });
+            await fetch(serverUrl + id, { method: 'DELETE' })
             const updatedFavourites = favourites.filter(favourite => favourite._id !== id);
+            const updatedFilteredFavourites = filteredFavourites.filter(favourite => favourite._id !== id);
             setFavourites(updatedFavourites);
+            setFilteredFavourites(updatedFilteredFavourites);
         } catch (error) {
             console.error('Error deleting todo:', error);
         }
@@ -118,9 +120,11 @@ export default function ShowFavourites({ backClick, serverUrl }) {
                 {favourites && !filteredFavourites && favourites.map((favourite, index) => (
                     <div className="fav" key={favourite._id}>
                         <img className="favimg" src={favourite.imgUrl}></img>
+                        <div className="favtext">
                         <h3>{favourite.title}</h3>
                         <p>{favourite.comment}</p>
                         <p>{favourite.votes}</p>
+                        </div>
                         <button className="deletefavourite" onClick={() => handleDelete(favourite._id)}>delete</button>
                         <button className="editfavourite" onClick={() => handleEdit(favourite)}>edit</button>
                     </div>

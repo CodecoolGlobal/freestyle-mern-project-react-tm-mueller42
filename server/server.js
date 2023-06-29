@@ -37,23 +37,10 @@ app.get("/catnames", (req, res) => {
     res.send(data.cats);
   
 })
-// app.get('/animal', (req, res) => {
-//     Animal.find({})
-//     .then(data => res.json(data))
-//     .catch(error => res.json(error))
-
-// })
-
-// app.get("/animal", (req,res) => {
-//     Animal.find({})
-//     .then(data => res.json(data))
-//     .catch(error => res.json(error))
-// });
 
 app.get('/animal', (req, res) => {
     Animal.find()
         .then(animal => {
-        // console.log("animal", animal)
         res.json(animal);
         })
         .catch(error => {
