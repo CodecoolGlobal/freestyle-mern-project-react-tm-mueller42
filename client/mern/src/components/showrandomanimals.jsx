@@ -154,10 +154,18 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randombuttonscontainer">
-              <button type="submit">submit</button>
-              <button className="nextbutton" onClick={handleClickNext}>next</button>
-              <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
-              <button type="button" className="showVotes" onClick={handleClickShowVotes}>Show Voting Status</button>
+              <div className="randombutton1">
+                <button type="submit">submit</button>
+              </div>
+              <div className="randombutton1">
+                <button className="nextbutton" onClick={handleClickNext}>next</button>
+              </div>
+              <div className="randombutton1">
+                <button type="button" onClick={handleClickShowFavourites}> show Favorite</button>
+              </div>
+              <div className="randombutton1">
+                <button type="button" className="showVotes" onClick={handleClickShowVotes}>Show Voting Status</button>
+              </div>
             </div>
             <div className="randomcatsidebar">
               <label>Add cat to favourites
