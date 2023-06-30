@@ -14,6 +14,8 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   const [showVotes, setShowVotes] = useState(false);
   const [playMeow] = useSound(meow);
   const [playBark] = useSound(bark);
+  const [votedForCat, setVotedForCat] = useState(false);
+  const [votedForDog, setVotedForDog] = useState(false);
 
   class Animal {
     constructor(id, title, comment, breed, favorite, rating, createdAt, imgUrl, type) {
@@ -80,6 +82,8 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
     setSubmitted(false);
     setCatData({});
     setDogData({});
+    setVotedForCat(false);
+    setVotedForDog(false);
   }
 
   const updateVotes = () => {
@@ -93,54 +97,62 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   }
 
   const handleClickCatVote = () => {
-    playMeow();
-    const newVotes = {
-      catVotes: 1,
-      dogVotes: 0,
-      catRating: 0,
-      dogRating: 0,
-      numberOfCats: 0,
-      numberOfDogs: 0,
-    }
-    fetch(votesUrl, {
-      method: "POST",
-      body: JSON.stringify(newVotes),
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      updateVotes();
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
+    if (!votedForCat) {
+      playMeow();
+      const newVotes = {
+        catVotes: 1,
+        dogVotes: votedForDog?-1:0,
+        catRating: 0,
+        dogRating: 0,
+        numberOfCats: 0,
+        numberOfDogs: 0,
+      }
+      fetch(votesUrl, {
+        method: "POST",
+        body: JSON.stringify(newVotes),
+        headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        updateVotes();
+        setVotedForCat(true);
+        setVotedForDog(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    };
+  };
 
   const handleClickDogVote = () => {
-    playBark();
-    const newVotes = {
-      catVotes: 0,
-      dogVotes: 1,
-      catRating: 0,
-      dogRating: 0,
-      numberOfCats: 0,
-      numberOfDogs: 0,
-    }
-    fetch(votesUrl, {
-      method: "POST",
-      body: JSON.stringify(newVotes),
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      updateVotes();
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
+    if(!votedForDog){
+      playBark();
+      const newVotes = {
+        catVotes: votedForCat?-1:0,
+        dogVotes: 1,
+        catRating: 0,
+        dogRating: 0,
+        numberOfCats: 0,
+        numberOfDogs: 0,
+      }
+      fetch(votesUrl, {
+        method: "POST",
+        body: JSON.stringify(newVotes),
+        headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        updateVotes();
+        setVotedForDog(true);
+        setVotedForCat(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    };
+  };
 
   useEffect (() => {
     updateVotes();
@@ -181,12 +193,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
             </div>
             <div className="randomimagescontainer">
               <div className="randomcatimagecontainer">
-                <img className="randomcatimage" src={cat.url} ></img>
+                <img className="randomcatimage" src={cat.url} onClick={handleClickCatVote}></img>
                 <button className="voteCat" type="button" onClick={handleClickCatVote}>The cat is cute. Vote for the cat!</button>
                 <div>Cat Votes: {catVotes}</div>
               </div>
               <div className="randomdogimagecontainer">
-                <img className="randomdogimage" src={dog.url} ></img>
+                <img className="randomdogimage" src={dog.url} onClick={handleClickDogVote}></img>
                 <button className="voteDog" type="button" onClick={handleClickDogVote}>The dog is cool. Vote for the dog!</button>
                 <div>Dog Votes: {dogVotes}</div>
               </div>

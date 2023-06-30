@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
+import useSound from 'use-sound';
+import meow from "../sounds/meow.wav";
+import bark from "../sounds/bark.mp3";
 
 export default function ({catVotes, dogVotes, backClick}) {
   const [displayedCatVote, setDisplayedCatVote] = useState(0);
   const [displayedDogVote, setDisplayedDogVote] = useState(0);
+  const [playMeow] = useSound(meow);
+  const [playBark] = useSound(bark);
 
   function handleBackClick() {
     backClick(false)
@@ -23,7 +28,10 @@ export default function ({catVotes, dogVotes, backClick}) {
       setTimeout(() => {
         setDisplayedCatVote(displayedCatVote+1);
       }, 1500/catVotes);
-    };
+    }
+    if (displayedCatVote===catVotes-1 && catVotes>dogVotes) {
+      playMeow();
+    }
     if (displayedDogVote<=dogVotes) {
       setTimeout(() => {
         setDisplayedDogVote(displayedDogVote+1);
