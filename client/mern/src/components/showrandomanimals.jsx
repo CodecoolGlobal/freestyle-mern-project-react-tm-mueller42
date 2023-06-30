@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import VotingResults from "../components/VotingResults";
 
 export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, serverUrl, votesUrl }) {
 
@@ -7,6 +8,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   const [dogData, setDogData] = useState({});
   const [catVotes, setCatVotes] = useState(0);
   const [dogVotes, setDogVotes] = useState(0);
+  const [showVotes, setShowVotes] = useState(false);
 
   class Animal {
     constructor(id, title, comment, breed, favorite, rating, createdAt, imgUrl, type) {
@@ -136,12 +138,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   }, []);
 
   const handleClickShowVotes = () => {
-
+    setShowVotes(true);
   }
 
   return (
     <>
-      {!submitted &&
+      {!submitted && !showVotes &&
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randombuttonscontainer">
@@ -187,12 +189,22 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
         </>
       }
       {
-        submitted &&
+        submitted && !showVotes &&
         <div className = "submitcontainer">
           submitted
           <br></br>
           <button className = "backfromsubmitted" onClick={() => {setSubmitted(false)}}>back</button>
           <button className = "nextbutton" onClick={handleClickNext}>next</button>
+        </div>
+      }
+      {
+        showVotes &&
+        <div>
+          <VotingResults 
+          catVotes={catVotes}
+          dogVotes={dogVotes}
+          backClick={setShowVotes}
+          />
         </div>
       }
     </>
