@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import VotingResults from "../components/VotingResults";
 import useSound from 'use-sound';
 import meow from "../sounds/meow.wav";
 import bark from "../sounds/bark.mp3";
@@ -10,6 +11,7 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   const [dogData, setDogData] = useState({});
   const [catVotes, setCatVotes] = useState(0);
   const [dogVotes, setDogVotes] = useState(0);
+  const [showVotes, setShowVotes] = useState(false);
   const [playMeow] = useSound(meow);
   const [playBark] = useSound(bark);
 
@@ -145,12 +147,12 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
   }, []);
 
   const handleClickShowVotes = () => {
-
+    setShowVotes(true);
   }
 
   return (
     <>
-      {!submitted &&
+      {!submitted && !showVotes &&
         <>
           <form onSubmit={handleSubmit} className="randomanimalform">
             <div className="randombuttonscontainer">
@@ -204,12 +206,22 @@ export default function ShowRandomAnimals({ cat, dog, showFavourites, loadNext, 
         </>
       }
       {
-        submitted &&
+        submitted && !showVotes &&
         <div className = "submitcontainer">
           Submitted!
           <br></br>
           <button className = "backfromsubmitted" onClick={() => {setSubmitted(false)}}>back</button>
           <button className = "next" onClick={handleClickNext}>next</button>
+        </div>
+      }
+      {
+        showVotes &&
+        <div>
+          <VotingResults 
+          catVotes={catVotes}
+          dogVotes={dogVotes}
+          backClick={setShowVotes}
+          />
         </div>
       }
     </>
