@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ShowFavourites({ backClick, serverUrl }) {
 
@@ -9,7 +9,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     const [editedVote, setEditedVote] = useState("");
 
     const [filteredFavourites, setFilteredFavourites] = useState(null);
-    const votes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const votes = [...Array(10).keys()];
     const [filteredByType, setFilteredByType] = useState(false);
     const [filteredByVote, setFilteredByVote] = useState("No-vote");
 
@@ -29,6 +29,17 @@ export default function ShowFavourites({ backClick, serverUrl }) {
     function handleBackClick() {
         backClick(false)
     }
+
+    useEffect(() => {
+
+        if (filteredByType && filteredByVote !== "No-vote") {
+            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
+        } else if (filteredByType) {
+            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType)));
+        } else if (filteredByVote !== "No-vote") {
+            setFilteredFavourites(favourites.filter(fav => (fav.votes === filteredByVote)));
+        }
+    }, [filteredByType, filteredByVote, favourites])
 
 
 
@@ -83,16 +94,7 @@ export default function ShowFavourites({ backClick, serverUrl }) {
         setFilteredByVote("No-vote");
     }
 
-    useEffect(() => {
 
-        if (filteredByType && filteredByVote !== "No-vote") {
-            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType) && (fav.votes === filteredByVote)))
-        } else if (filteredByType) {
-            setFilteredFavourites(favourites.filter(fav => (fav.type === filteredByType)));
-        } else if (filteredByVote !== "No-vote") {
-            setFilteredFavourites(favourites.filter(fav => (fav.votes === filteredByVote)));
-        }
-    }, [filteredByType, filteredByVote, favourites])
 
     return (
         <div className="favouriteandeditcontainer">
